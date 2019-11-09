@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/outofammo.ogg-9f3a5c8d92962f388cc04fb5ce6d613d.oggstr"
+
+[deps]
+
+source_file="res://sounds/Sniper Shot with no Ammo/outofammo.ogg"
+dest_files=[ "res://.import/outofammo.ogg-9f3a5c8d92962f388cc04fb5ce6d613d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
