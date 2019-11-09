@@ -12,6 +12,14 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().quit()
+	if event is InputEventMouseButton and event.pressed:
+		match (event.button_index):
+			BUTTON_LEFT:
+				print_debug("BUTTON_LEFT")
+			BUTTON_RIGHT:
+				print_debug("BUTTON_RIGHT")
+			_:
+				print_debug("No")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

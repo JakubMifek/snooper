@@ -25,12 +25,8 @@ texture = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="CanvasLayer2"]
+visible = false
 margin_right = 8.0
 margin_bottom = 14.0
 text = "X"
 script = ExtResource( 4 )
-
-[node name="Panel" type="Panel" parent="CanvasLayer2"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
