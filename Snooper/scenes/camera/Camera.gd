@@ -6,7 +6,7 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		self.position += event.relative / 3
+		self.position += event.relative
 		
 		if self.position.x < self.limit_left:
 			self.position.x = self.limit_left

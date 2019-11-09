@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/population/Population.gd" type="Script" id=1]
+
+[node name="Population" type="Node2D"]
+script = ExtResource( 1 )
+spawnLocation = Vector2( -575.438, -293 )
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="PopulationCounter" type="RichTextLabel" parent="Canvas"]
+margin_right = 120.0
+margin_bottom = 40.0
+rect_scale = Vector2( 3, 3 )
+text = "Population: 5"
+scroll_active = false
