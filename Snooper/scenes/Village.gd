@@ -13,25 +13,26 @@ func _ready():
 func spawnCitizen():
 	var rnd = randf()
 	if rnd < 0.33:
-		self._spawnFarmer()
+		return self._spawnFarmer()
 	elif rnd < 0.66:
-		self._spawnLumberjack()
+		return self._spawnLumberjack()
 	else:
-		self._spawnStoneMiner()
+		return self._spawnStoneMiner()
 	
 func _spawnFarmer():
 	var newCitizen = farmer.instance()
-	self._spawnCitizen(newCitizen, $Farm)
+	return self._spawnCitizen(newCitizen, $Farm)
 	
 func _spawnLumberjack():
 	var newCitizen = lumberjack.instance()
-	self._spawnCitizen(newCitizen, $Lumbermill)
+	return self._spawnCitizen(newCitizen, $Lumbermill)
 	
 func _spawnStoneMiner():
 	var newCitizen = stoneMiner.instance()
-	self._spawnCitizen(newCitizen, $Quarry)
+	return self._spawnCitizen(newCitizen, $Quarry)
 	
 func _spawnCitizen(citizen, occupation):
 	var house = houses[randi() % houses.size()]
 	citizen.initialize(house, occupation, $Storage, $Granary)
 	get_tree().get_root().add_child(citizen)
+	return citizen

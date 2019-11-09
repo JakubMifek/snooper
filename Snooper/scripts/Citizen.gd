@@ -77,3 +77,5 @@ func _getAnimationToPlay(normalizedDirection):
 	else:
 		return "move_left"
 	
+func _kill():
+	pass
