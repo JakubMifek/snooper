@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wood03.ogg-9ebebe67d6a5ff571c52cbae731309c5.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager footsteps/wood03.ogg"
+dest_files=[ "res://.import/wood03.ogg-9ebebe67d6a5ff571c52cbae731309c5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

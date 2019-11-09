@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/leaves02.ogg-82de11a5ee9cb9cd5819ae78abf7158d.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager footsteps/leaves02.ogg"
+dest_files=[ "res://.import/leaves02.ogg-82de11a5ee9cb9cd5819ae78abf7158d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
