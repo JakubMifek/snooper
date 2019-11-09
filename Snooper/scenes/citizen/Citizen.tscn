@@ -7,6 +7,6 @@
 
 [node name="NPC" type="Sprite" parent="."]
 position = Vector2( 515.989, 307.475 )
-scale = Vector2( 0.02, 0.02 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )

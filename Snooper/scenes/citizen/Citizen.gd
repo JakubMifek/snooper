@@ -7,7 +7,7 @@ enum DIRECTION {
 var _currentDirection = DIRECTION.left
 var _timeSinceDirectionChange = 1.0
 
-const speed = 55.0
+const speed = 255.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
