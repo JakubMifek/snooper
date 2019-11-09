@@ -1,47 +1,32 @@
-extends Sprite
+extends Node2D
 
 enum DIRECTION {
-	left, right, top, bottom
+	house, occupation
 }
 
-var _currentDirection = DIRECTION.left
-var _timeSinceDirectionChange = 1.0
+const speed = 1255.0
 
-const speed = 55.0
+var houseLocation = Vector2()
+var occupationLocation = Vector2()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var _currentDirection = DIRECTION.occupation
 
 func _process(delta):
-	_timeSinceDirectionChange += delta
-	if _timeSinceDirectionChange >= 1.0:
-		_timeSinceDirectionChange = 0.0
-		_changeDirection()
-		
 	_moveAccordingToDirection(delta)
 
 func _changeDirection():
-	var rnd = randi() % 4
-	if rnd == 0:
-		_currentDirection = DIRECTION.left
-	elif rnd == 1:
-		self._currentDirection = DIRECTION.right
-	elif rnd == 2:
-		self._currentDirection = DIRECTION.bottom
-	elif rnd == 3:
-		self._currentDirection = DIRECTION.top
+	self._currentDirection = DIRECTION.occupation if _currentDirection == DIRECTION.house else DIRECTION.house
 	
 func _moveAccordingToDirection(delta): 
-	var moveVector = Vector2()
-	if _currentDirection == DIRECTION.left:
-		moveVector = Vector2(-1.0, 0.0)
-	elif self._currentDirection == DIRECTION.right:
-		moveVector = Vector2(1.0, 0.0)
-	elif self._currentDirection == DIRECTION.top:
-		moveVector = Vector2(0.0, -1.0)
-	elif self._currentDirection == DIRECTION.bottom:
-		moveVector = Vector2(0.0, 1.0)
-		
-	moveVector *= delta * speed
+	var goingToLocation = houseLocation if _currentDirection == DIRECTION.house else occupationLocation
+	var direction = goingToLocation - self.position
+	if (direction.length() < 1.0):
+		self._changeDirection()
+	else:
+		self._moveToDirection(direction, delta)
+	
+func _moveToDirection(direction, delta):
+	var normalizedDirection = direction.normalized()
+	var moveVector = normalizedDirection * speed
+
 	self.position += moveVector

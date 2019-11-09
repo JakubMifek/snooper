@@ -1,8 +1,7 @@
 extends Node2D
 
-onready var citizen = preload("res://scenes/citizen/Citizen.tscn")
-
 export var spawnLocation = Vector2()
+export var mapScene: NodePath
 
 var timeSinceLastSpawn = 4.5
 var increatePopulationEveryXSeconds = 5
@@ -18,9 +17,7 @@ func _process(delta):
 		timeSinceLastSpawn = timeSinceLastSpawn - increatePopulationEveryXSeconds
 		
 func _spawnCitizen():
-	var newCitizen = citizen.instance()
-	newCitizen.position = spawnLocation
-	get_tree().get_root().add_child(newCitizen)
+	get_node(mapScene).spawnCitizen()
 	currentPopulation += 1
 	_setText()
 
