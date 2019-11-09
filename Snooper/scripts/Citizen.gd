@@ -8,7 +8,7 @@ enum DIRECTION {
 
 const MAX_HUNGRY_RATIO = 0.50
 const MIN_HUNGRY_RATIO = 0.25
-const SPEED = 3.0
+const SPEED = 2.0
 
 var houseLocation = Vector2()
 var occupationLocation = Vector2()
