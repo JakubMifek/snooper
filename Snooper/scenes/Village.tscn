@@ -83,6 +83,7 @@ position = Vector2( 918.561, -106.371 )
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Man" type="Node2D" parent="Sounds"]
+editor/display_folded = true
 
 [node name="01" type="AudioStreamPlayer2D" parent="Sounds/Man"]
 stream = ExtResource( 10 )
@@ -127,5 +128,7 @@ volume_db = 10.0
 [node name="11" type="AudioStreamPlayer2D" parent="Sounds/Man"]
 stream = ExtResource( 20 )
 volume_db = 10.0
+
+[node name="Woman" type="Node2D" parent="Sounds"]
 
 [node name="Citizens" type="Node2D" parent="."]
