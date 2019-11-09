@@ -1,29 +1,61 @@
 extends Control
 
-# Declare member variables here. Examples:
+# Other nodes
 var Population
 var Cam
-var COOLDOWN_IN_MS = 5 * 1000
-var shotat = OS.get_ticks_msec() - COOLDOWN_IN_MS
+
+# Sounds
+var Shots = []
+var Reload
+
+# Variables
+var T
+var COOLDOWN_IN_MS = 4.5 * 1000
+var can_shoot = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
+func _on_reload_timeout():
+	can_shoot=true
+
+func _on_timeout():
+	Reload.play()
+
 func _input(event):
 	if Population == null:
-		Population = get_parent().get_parent().get_node('Population')
-	if Cam == null:
-		Cam = get_parent().get_parent().get_node('Camera').get_node('Camera2D')
+		var parent = get_parent()
+		Shots = [parent.get_node('Shot_01'),parent.get_node('Shot_03'),parent.get_node('Shot_02')]
+		Reload = parent.get_node('Reload')
+		Reload.connect('finished', self, '_on_reload_timeout')
+
+		parent = parent.get_parent()
+		Population = parent.get_node('Population')
+		Cam = parent.get_node('Camera').get_node('Camera2D')
+		
+		T = Timer.new()
+		add_child(T)
+		T.wait_time = COOLDOWN_IN_MS/1000
+		T.one_shot = true
+		T.connect("timeout", self, "_on_timeout")
 	
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().quit()
-	if event is InputEventMouseButton and event.pressed and OS.get_ticks_msec() - shotat >= COOLDOWN_IN_MS:
+	if event is InputEventMouseButton and event.pressed and can_shoot:
 		match (event.button_index):
 			BUTTON_LEFT:
+				# Play sound effect
+				Shots[int(rand_range(0, len(Shots)))].play()
+				
+				# Kill people
 				Population._killCitizens(Cam.position)
-				shotat = OS.get_ticks_msec()
+				
+				# Reloading
+				can_shoot=false
+				T.start()
 			BUTTON_RIGHT:
 				print_debug("BUTTON_RIGHT")
 			_:
