@@ -1,2 +1,0 @@
-# snooper
-The Snooper
