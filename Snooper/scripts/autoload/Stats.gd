@@ -34,3 +34,6 @@ func _init():
 		 _resources[RESOURCES.stone_miners],
 		 _resources[RESOURCES.lumberjacks]
 	]
+	
+func add_resource(resourceType, value):
+	self._resources[resourceType] += value

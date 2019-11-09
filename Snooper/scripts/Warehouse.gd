@@ -6,8 +6,8 @@ const FarmerClass = preload("res://scripts/people/Farmer.gd")
 
 func interactWith(citizen):
 	if citizen is StoneMinerClass:
-		print("colliding with miner")
+		Stats.add_resource(Stats.RESOURCES.stone, +1)
 	elif citizen is LumberjackClass:
-		print("colliding with lumberjack")
+		Stats.add_resource(Stats.RESOURCES.wood, +1)
 	elif citizen is FarmerClass:
-		print("colliding with farmer")
+		Stats.add_resource(Stats.RESOURCES.wheat, +1)
