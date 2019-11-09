@@ -1,0 +1,29 @@
+[gd_scene format=2]
+
+[node name="Case" type="Node2D"]
+
+[node name="Body" type="ColorRect" parent="."]
+margin_right = 80.0
+margin_bottom = 50.0
+color = Color( 0.603922, 0.345098, 0.117647, 1 )
+
+[node name="Handle" type="Node2D" parent="."]
+
+[node name="Left" type="ColorRect" parent="Handle"]
+margin_left = 25.0
+margin_top = -10.0
+margin_right = 30.0
+color = Color( 0.588235, 0.278431, 0.184314, 1 )
+
+[node name="Right" type="ColorRect" parent="Handle"]
+margin_left = 50.0
+margin_top = -10.0
+margin_right = 55.0
+color = Color( 0.588235, 0.278431, 0.184314, 1 )
+
+[node name="Top" type="ColorRect" parent="Handle"]
+margin_left = 25.0
+margin_top = -10.0
+margin_right = 55.0
+margin_bottom = -5.0
+color = Color( 0.588235, 0.278431, 0.184314, 1 )
