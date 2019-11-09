@@ -1,15 +1,18 @@
 extends Node2D
 
 
-onready var citizen = preload("res://scenes/citizen/Citizen.tscn")
+onready var citizen = preload("res://people/farmer.tscn")
 
+var houses
+
+func _ready():
+	houses = get_tree().get_nodes_in_group("houses")
 
 func spawnCitizen():
 	var newCitizen = citizen.instance()
-	# newCitizen.position = homeLocations[0]
+	newCitizen.position = houses[0].position
 	
-	# print(newCitizen.houseLocation)
-	# newCitizen.houseLocation = homeLocations[0]
-	# newCitizen.occupationLocation = homeLocations[1]
+	newCitizen.houseLocation = houses[0].position
+	newCitizen.occupationLocation = houses[1].position
 	
-	# get_tree().get_root().add_child(newCitizen)
+	get_tree().get_root().add_child(newCitizen)

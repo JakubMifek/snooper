@@ -17,10 +17,9 @@ func _process(delta):
 		timeSinceLastSpawn = timeSinceLastSpawn - increatePopulationEveryXSeconds
 		
 func _spawnCitizen():
-	pass
-	# get_node(village).spawnCitizen()
-	# currentPopulation += 1
-	# _setText()
+	get_node(village).spawnCitizen()
+	currentPopulation += 1
+	_setText()
 
 func _setText():
 	var label = get_node("Canvas/PopulationCounter")

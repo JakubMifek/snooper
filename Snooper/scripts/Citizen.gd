@@ -4,7 +4,7 @@ enum DIRECTION {
 	house, occupation
 }
 
-const speed = 1255.0
+const speed = 5.0
 
 var houseLocation = Vector2()
 var occupationLocation = Vector2()
