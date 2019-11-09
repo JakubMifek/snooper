@@ -19,6 +19,10 @@ config/name="Snooper"
 run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Stats="*res://scripts/autoload/Stats.gd"
+
 [display]
 
 window/size/fullscreen=true
