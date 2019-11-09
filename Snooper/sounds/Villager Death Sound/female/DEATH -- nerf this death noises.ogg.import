@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DEATH -- nerf this death noises.ogg-4cddfda905d0ecdee7f627359987de6d.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager Death Sound/female/DEATH -- nerf this death noises.ogg"
+dest_files=[ "res://.import/DEATH -- nerf this death noises.ogg-4cddfda905d0ecdee7f627359987de6d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

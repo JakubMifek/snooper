@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DEATH -- british female panic oh god im dead.ogg-026da656366d5b2492850eb517505cb9.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager Death Sound/female/DEATH -- british female panic oh god im dead.ogg"
+dest_files=[ "res://.import/DEATH -- british female panic oh god im dead.ogg-026da656366d5b2492850eb517505cb9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

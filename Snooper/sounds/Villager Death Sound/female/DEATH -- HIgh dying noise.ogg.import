@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DEATH -- HIgh dying noise.ogg-eaa419687f1e933ff2801697daf66f67.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager Death Sound/female/DEATH -- HIgh dying noise.ogg"
+dest_files=[ "res://.import/DEATH -- HIgh dying noise.ogg-eaa419687f1e933ff2801697daf66f67.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

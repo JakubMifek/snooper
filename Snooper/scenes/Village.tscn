@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://images/tilemaps/Pipoya RPG Tileset 32x32/type_1_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://images/backgrounds/greeen.jpg" type="Texture" id=2]
@@ -10,6 +10,16 @@
 [ext_resource path="res://scenes/buildings/Granary.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/buildings/Quarry.tscn" type="PackedScene" id=9]
 [ext_resource path="res://sounds/Villager Death Sound/male/deathh.wav" type="AudioStream" id=10]
+[ext_resource path="res://sounds/Villager Death Sound/male/die1.wav" type="AudioStream" id=11]
+[ext_resource path="res://sounds/Villager Death Sound/male/die2.wav" type="AudioStream" id=12]
+[ext_resource path="res://sounds/Villager Death Sound/male/pain1.wav" type="AudioStream" id=13]
+[ext_resource path="res://sounds/Villager Death Sound/male/pain2.wav" type="AudioStream" id=14]
+[ext_resource path="res://sounds/Villager Death Sound/male/pain3.wav" type="AudioStream" id=15]
+[ext_resource path="res://sounds/Villager Death Sound/male/pain4.wav" type="AudioStream" id=16]
+[ext_resource path="res://sounds/Villager Death Sound/male/pain5.wav" type="AudioStream" id=17]
+[ext_resource path="res://sounds/Villager Death Sound/male/pain6.wav" type="AudioStream" id=18]
+[ext_resource path="res://sounds/Villager Death Sound/male/painh.wav" type="AudioStream" id=19]
+[ext_resource path="res://sounds/Villager Death Sound/male/paino.wav" type="AudioStream" id=20]
 
 [node name="Node2D" type="Node2D"]
 
@@ -76,6 +86,46 @@ position = Vector2( 918.561, -106.371 )
 
 [node name="01" type="AudioStreamPlayer2D" parent="Sounds/Man"]
 stream = ExtResource( 10 )
+volume_db = 10.0
+
+[node name="02" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 11 )
+volume_db = 10.0
+
+[node name="03" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 12 )
+volume_db = 10.0
+
+[node name="04" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 13 )
+volume_db = 10.0
+
+[node name="05" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 14 )
+volume_db = 10.0
+
+[node name="06" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 15 )
+volume_db = 10.0
+
+[node name="07" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 16 )
+volume_db = 10.0
+
+[node name="08" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 17 )
+volume_db = 10.0
+
+[node name="09" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 18 )
+volume_db = 10.0
+
+[node name="10" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 19 )
+volume_db = 10.0
+
+[node name="11" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 20 )
 volume_db = 10.0
 
 [node name="Citizens" type="Node2D" parent="."]
