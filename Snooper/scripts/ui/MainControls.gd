@@ -27,8 +27,9 @@ func _on_timeout():
 func _input(event):
 	if Population == null:
 		var parent = get_parent()
-		Shots = [parent.get_node('Shot_01'),parent.get_node('Shot_03'),parent.get_node('Shot_02')]
-		Reload = parent.get_node('Reload')
+		var sounds = parent.get_node('CanvasLayer2')
+		Shots = [sounds.get_node('Shot_01'),sounds.get_node('Shot_03'),sounds.get_node('Shot_02')]
+		Reload = sounds.get_node('Reload')
 		Reload.connect('finished', self, '_on_reload_timeout')
 
 		parent = parent.get_parent()
@@ -43,7 +44,7 @@ func _input(event):
 	
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
-			get_tree().quit()
+			get_tree().change_scene("res://scenes/menu/Menu.tscn")
 	if event is InputEventMouseButton and event.pressed and can_shoot:
 		match (event.button_index):
 			BUTTON_LEFT:
