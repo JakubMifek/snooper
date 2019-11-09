@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 54.1297, 36.4914 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Mock" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Mock"]
+margin_right = 112.0
+margin_bottom = 77.0
+
+[node name="TextEdit" type="TextEdit" parent="Mock"]
+margin_left = 11.5823
+margin_top = 6.48608
+margin_right = 101.582
+margin_bottom = 67.4861
+text = "Storage"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 56.2258, 38.1128 )
+shape = SubResource( 1 )
