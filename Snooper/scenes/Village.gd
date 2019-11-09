@@ -3,7 +3,7 @@ extends Node2D
 
 onready var farmer = preload("res://people/farmer.tscn")
 onready var lumberjack = preload("res://people/lumberjack.tscn")
-# onready var stoneMiner = preload("res://people/stone_miner.tscn")
+onready var stoneMiner = preload("res://people/stone_miner.tscn")
 
 var houses
 
@@ -12,12 +12,12 @@ func _ready():
 
 func spawnCitizen():
 	var rnd = randf()
-	if rnd < 0.55:
+	if rnd < 0.33:
 		self._spawnFarmer()
-	else:
+	elif rnd < 0.66:
 		self._spawnLumberjack()
-	#else:
-	#	self._spawnStoneMiner()
+	else:
+		self._spawnStoneMiner()
 	
 func _spawnFarmer():
 	var newCitizen = farmer.instance()
@@ -27,9 +27,9 @@ func _spawnLumberjack():
 	var newCitizen = lumberjack.instance()
 	self._spawnCitizen(newCitizen, $Lumbermill)
 	
-#func _spawnStoneMiner():
-#	var newCitizen = stoneMiner.instance()
-#	self._spawnCitizen(newCitizen, $Quarry)
+func _spawnStoneMiner():
+	var newCitizen = stoneMiner.instance()
+	self._spawnCitizen(newCitizen, $Quarry)
 	
 func _spawnCitizen(citizen, occupation):
 	var house = houses[randi() % houses.size()]
