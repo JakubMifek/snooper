@@ -14,9 +14,9 @@ enum RESOURCES {
 
 var _resources = {
 	RESOURCES.population: resource.new("population", 0, INF),
-	RESOURCES.wheat: resource.new("wheat", 0, 0),
-	RESOURCES.stone: resource.new("stone", 0, 0),
-	RESOURCES.wood: resource.new("wood", 0, 0),
+	RESOURCES.wheat: resource.new("wheat", 0, INF),
+	RESOURCES.stone: resource.new("stone", 0, INF),
+	RESOURCES.wood: resource.new("wood", 0, INF),
 	RESOURCES.farmers: resource.new("farmers", 0, INF),
 	RESOURCES.stone_miners: resource.new("stone_miners", 0, INF),
 	RESOURCES.lumberjacks: resource.new("lumberjacks", 0, INF)
@@ -42,3 +42,6 @@ func add_resource(resourceType, value):
 		resource.amount = resource.capacity
 	elif resource.amount < 0:
 		resource.amount = 0
+		
+func get_resource(resourceType):
+	return self._resources[resourceType]
