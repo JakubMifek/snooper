@@ -2,12 +2,12 @@
 
 importer="ogg_vorbis"
 type="AudioStreamOGGVorbis"
-path="res://.import/ren2.ogg-a3e48acacc27b22e345884a4882cb74c.oggstr"
+path="res://.import/ren2.ogg-cf42c438793716d9ba5696dfd3657b62.oggstr"
 
 [deps]
 
-source_file="res://sounds/Sniper Shot/q009/ren2.ogg"
-dest_files=[ "res://.import/ren2.ogg-a3e48acacc27b22e345884a4882cb74c.oggstr" ]
+source_file="res://sounds/Sniper Shot/ren2.ogg"
+dest_files=[ "res://.import/ren2.ogg-cf42c438793716d9ba5696dfd3657b62.oggstr" ]
 
 [params]
 
