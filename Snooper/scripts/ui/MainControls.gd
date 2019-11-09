@@ -57,6 +57,8 @@ func _input(event):
 				# Reloading
 				can_shoot=false
 				T.start()
+				
+				get_parent().get_node('CanvasLayer2').get_node('CooldownBar').reset_cooldown(COOLDOWN_IN_MS/1000)
 			BUTTON_RIGHT:
 				print_debug("BUTTON_RIGHT")
 			_:
