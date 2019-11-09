@@ -16,10 +16,7 @@ bg_color = Color( 0.87451, 0.160784, 0.160784, 1 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.75806
-margin_top = -1.75809
-margin_right = 1.75806
-margin_bottom = -1.75806
+margin_bottom = 6.10352e-005
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 10

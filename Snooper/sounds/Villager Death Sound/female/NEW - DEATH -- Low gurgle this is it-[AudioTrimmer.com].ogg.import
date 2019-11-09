@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NEW - DEATH -- Low gurgle this is it-[AudioTrimmer.com].ogg-2b0cd71b15b0b59a1a2df9ee619e98e0.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager Death Sound/female/NEW - DEATH -- Low gurgle this is it-[AudioTrimmer.com].ogg"
+dest_files=[ "res://.import/NEW - DEATH -- Low gurgle this is it-[AudioTrimmer.com].ogg-2b0cd71b15b0b59a1a2df9ee619e98e0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

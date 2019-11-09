@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NEW - DEATH -- Ugh ![AudioTrimmer.com].ogg-6e5cc5d11b1776a8c0eca703e5b40db3.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager Death Sound/female/NEW - DEATH -- Ugh ![AudioTrimmer.com].ogg"
+dest_files=[ "res://.import/NEW - DEATH -- Ugh ![AudioTrimmer.com].ogg-6e5cc5d11b1776a8c0eca703e5b40db3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

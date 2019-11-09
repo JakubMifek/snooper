@@ -10,5 +10,5 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func interactWith(citizen):
+func interactWith(citizen, goal):
 	pass

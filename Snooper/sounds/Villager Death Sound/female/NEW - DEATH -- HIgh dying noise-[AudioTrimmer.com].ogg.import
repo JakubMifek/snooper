@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NEW - DEATH -- HIgh dying noise-[AudioTrimmer.com].ogg-9d42345da23d23630ac42a1d5a09f0e1.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager Death Sound/female/NEW - DEATH -- HIgh dying noise-[AudioTrimmer.com].ogg"
+dest_files=[ "res://.import/NEW - DEATH -- HIgh dying noise-[AudioTrimmer.com].ogg-9d42345da23d23630ac42a1d5a09f0e1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

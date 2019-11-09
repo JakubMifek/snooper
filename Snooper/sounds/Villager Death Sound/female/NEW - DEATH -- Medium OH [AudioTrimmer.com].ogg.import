@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/NEW - DEATH -- Medium OH [AudioTrimmer.com].ogg-6392f0e79c51ea189a4c5b43d13b1b64.oggstr"
+
+[deps]
+
+source_file="res://sounds/Villager Death Sound/female/NEW - DEATH -- Medium OH [AudioTrimmer.com].ogg"
+dest_files=[ "res://.import/NEW - DEATH -- Medium OH [AudioTrimmer.com].ogg-6392f0e79c51ea189a4c5b43d13b1b64.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

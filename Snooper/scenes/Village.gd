@@ -21,18 +21,18 @@ func spawnCitizen():
 	
 func _spawnFarmer():
 	var newCitizen = farmer.instance()
-	return self._spawnCitizen(newCitizen, $Farm)
+	return self._spawnCitizen(newCitizen, $Farm, $Granary)
 	
 func _spawnLumberjack():
 	var newCitizen = lumberjack.instance()
-	return self._spawnCitizen(newCitizen, $Lumbermill)
+	return self._spawnCitizen(newCitizen, $Lumbermill, $Storage)
 	
 func _spawnStoneMiner():
 	var newCitizen = stoneMiner.instance()
-	return self._spawnCitizen(newCitizen, $Quarry)
+	return self._spawnCitizen(newCitizen, $Quarry, $Storage)
 	
-func _spawnCitizen(citizen, occupation):
+func _spawnCitizen(citizen, occupation, storage):
 	var house = houses[randi() % houses.size()]
-	citizen.initialize(house, occupation, $Storage, $Granary)
+	citizen.initialize(house, occupation, storage, $Granary)
 	get_node('Citizens').add_child(citizen)
 	return citizen

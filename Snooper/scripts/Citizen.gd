@@ -1,10 +1,14 @@
 extends Node2D
 
+var Building = preload('Building.gd')
+
 onready var animation = get_node("AnimationPlayer")
 
 const MAX_HUNGRY_RATIO = 0.50
 const MIN_HUNGRY_RATIO = 0.25
 const SPEED = 2.0
+
+var goal = Building.Goal.GIVE
 
 # TODO: this can be private most probably
 var death_sounds
@@ -30,20 +34,25 @@ func _process(delta):
 	_moveAccordingToDirection(delta)
 
 func _onBuildingReached():
-	self._currentTargetBuilding.interactWith(self)
+	self._currentTargetBuilding.interactWith(self, self.goal)
 	
 	var rnd = randf()
 	if self._currentTargetBuilding == occupationBuilding:
 		self._currentTargetBuilding = warehouseBuilding
+		self.goal = Building.Goal.GIVE
 	elif self._currentTargetBuilding == foodBuilding:
 		self._currentTargetBuilding = occupationBuilding if rnd < 0.5 else houseBuilding
 	elif self._currentTargetBuilding == houseBuilding:
 		self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else occupationBuilding
+		if self._currentTargetBuilding == foodBuilding:
+			self.goal = Building.Goal.TAKE
 	elif self._currentTargetBuilding == warehouseBuilding:
 		self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else houseBuilding if rnd < (1.0 - self._hungryRatio) / 2 + self._hungryRatio else occupationBuilding
+		if self._currentTargetBuilding == foodBuilding:
+			self.goal = Building.Goal.TAKE
 	
 func _moveAccordingToDirection(delta):
-	var goingToLocation = self._currentTargetBuilding.position
+	var goingToLocation = self._currentTargetBuilding.position + self._currentTargetBuilding.get_node('Target').position
 	
 	var updateAnimation = self._previousTargetLocation != goingToLocation
 	self._previousTargetLocation = goingToLocation

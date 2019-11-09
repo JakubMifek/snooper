@@ -1,5 +1,10 @@
 extends Node2D
 
+enum Goal {
+	TAKE,
+	GIVE
+}
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -8,5 +13,5 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 
-func interactWith(citizen):
+func interactWith(citizen, goal):
 	pass

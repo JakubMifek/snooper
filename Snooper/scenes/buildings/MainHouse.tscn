@@ -28,3 +28,5 @@ text = "MainHouse"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 56.2258, 38.1128 )
 shape = SubResource( 1 )
+
+[node name="Target" type="Node2D" parent="."]

@@ -13,8 +13,8 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Mock"]
-margin_right = 112.0
-margin_bottom = 77.0
+margin_right = 10.0
+margin_bottom = 10.0
 
 [node name="TextEdit" type="TextEdit" parent="Mock"]
 margin_left = 11.5823
@@ -28,3 +28,5 @@ text = "Quarry"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 56.2258, 38.1128 )
 shape = SubResource( 1 )
+
+[node name="Target" type="Node2D" parent="."]

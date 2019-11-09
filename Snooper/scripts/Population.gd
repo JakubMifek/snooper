@@ -21,6 +21,7 @@ func _process(delta):
 func _killCitizens(position):
 	var peopleToKill = []
 	var idx = -1
+	
 	for person in population:
 		var sprite = person.get_node('Sprite')
 		var size = sprite.texture.get_size()
