@@ -36,5 +36,6 @@ func _spawnCitizen(citizen, occupation):
 	citizen.position = house.position
 	citizen.houseLocation = house.position
 	citizen.occupationLocation = occupation.position
+	citizen.foodLocation = $Granary.position
 	
 	get_tree().get_root().add_child(citizen)
