@@ -11,5 +11,5 @@ dest_files=[ "res://.import/DEATH -- Medium Ughh this hurts!.ogg-84cf68484fdc171
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

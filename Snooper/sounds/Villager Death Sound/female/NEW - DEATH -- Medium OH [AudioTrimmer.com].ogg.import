@@ -11,5 +11,5 @@ dest_files=[ "res://.import/NEW - DEATH -- Medium OH [AudioTrimmer.com].ogg-6392
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

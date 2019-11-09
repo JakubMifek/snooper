@@ -11,5 +11,5 @@ dest_files=[ "res://.import/NEW - DEATH -- Low gurgle this is it-[AudioTrimmer.c
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

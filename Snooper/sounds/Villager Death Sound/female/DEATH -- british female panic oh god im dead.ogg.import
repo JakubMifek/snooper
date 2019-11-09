@@ -11,5 +11,5 @@ dest_files=[ "res://.import/DEATH -- british female panic oh god im dead.ogg-026
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

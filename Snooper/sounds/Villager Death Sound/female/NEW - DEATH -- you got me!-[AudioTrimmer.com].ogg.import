@@ -11,5 +11,5 @@ dest_files=[ "res://.import/NEW - DEATH -- you got me!-[AudioTrimmer.com].ogg-2e
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

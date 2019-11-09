@@ -11,5 +11,5 @@ dest_files=[ "res://.import/NEW - DEATH -- Medium Ughh this hurts!-[AudioTrimmer
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

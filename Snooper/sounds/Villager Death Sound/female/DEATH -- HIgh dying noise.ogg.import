@@ -11,5 +11,5 @@ dest_files=[ "res://.import/DEATH -- HIgh dying noise.ogg-eaa419687f1e933ff28016
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

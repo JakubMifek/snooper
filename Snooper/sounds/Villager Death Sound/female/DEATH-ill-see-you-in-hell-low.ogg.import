@@ -11,5 +11,5 @@ dest_files=[ "res://.import/DEATH-ill-see-you-in-hell-low.ogg-7c3fb061332786c6ec
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

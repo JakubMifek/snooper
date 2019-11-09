@@ -11,5 +11,5 @@ dest_files=[ "res://.import/DEATH -- low gurgle oh im going down.ogg-ee697e9137b
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
