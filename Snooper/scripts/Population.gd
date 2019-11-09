@@ -1,13 +1,14 @@
 extends Node2D
 
 export var spawnLocation = Vector2()
-export var village: NodePath
 
+var village
 var timeSinceLastSpawn = 4.5
 var increatePopulationEveryXSeconds = 5
 var currentPopulation = 0
 
 func _ready():
+	village = get_node("../Village")
 	_setText()
 
 func _process(delta):
@@ -17,7 +18,7 @@ func _process(delta):
 		timeSinceLastSpawn = timeSinceLastSpawn - increatePopulationEveryXSeconds
 		
 func _spawnCitizen():
-	get_node(village).spawnCitizen()
+	village.spawnCitizen()
 	currentPopulation += 1
 	_setText()
 
