@@ -6,6 +6,7 @@ var Cam
 
 # Sounds
 var Shots = []
+var EmptyClip
 var Reload
 
 # Variables
@@ -29,6 +30,7 @@ func _input(event):
 		var parent = get_parent()
 		var sounds = parent.get_node('CanvasLayer2')
 		Shots = [sounds.get_node('Shot_01'),sounds.get_node('Shot_03'),sounds.get_node('Shot_02')]
+		EmptyClip = parent.get_node('CanvasLayer2').get_node('Shot_No_Ammo')
 		Reload = sounds.get_node('Reload')
 		Reload.connect('finished', self, '_on_reload_timeout')
 
@@ -45,22 +47,26 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().change_scene("res://scenes/menu/Menu.tscn")
-	if event is InputEventMouseButton and event.pressed and can_shoot:
+	if event is InputEventMouseButton and event.pressed:
 		match (event.button_index):
 			BUTTON_LEFT:
 				# Play sound effect
-				Shots[int(rand_range(0, len(Shots)))].play()
+				if can_shoot:
+					Shots[int(rand_range(0, len(Shots)))].play()
+					# Kill people
+					Population._killCitizens(Cam.position)
+					
+					# Reloading
+					can_shoot=false
+					T.start()
+					
+					get_parent().get_node('CanvasLayer2').get_node('CooldownBar').reset_cooldown(COOLDOWN_IN_MS/1000)
+				else:
+					EmptyClip.play()
 				
-				# Kill people
-				Population._killCitizens(Cam.position)
-				
-				# Reloading
-				can_shoot=false
-				T.start()
-				
-				get_parent().get_node('CanvasLayer2').get_node('CooldownBar').reset_cooldown(COOLDOWN_IN_MS/1000)
 			BUTTON_RIGHT:
-				print_debug("BUTTON_RIGHT")
+				if can_shoot:
+					print_debug("BUTTON_RIGHT")
 			_:
 				print_debug("No")
 
