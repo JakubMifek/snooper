@@ -36,4 +36,9 @@ func _init():
 	]
 	
 func add_resource(resourceType, value):
-	self._resources[resourceType] += value
+	var resource = self._resources[resourceType]
+	resource.amount += value
+	if resource.amount > resource.capacity:
+		resource.amount = resource.capacity
+	elif resource.amount < 0:
+		resource.amount = 0
