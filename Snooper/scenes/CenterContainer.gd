@@ -1,14 +1,14 @@
-extends "res://scripts/Building.gd"
+extends CenterContainer
 
-export var house_spawn_population = 0
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	rect_size.x = OS.window_size.x
+	rect_size.y = OS.window_size.y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-func interactWith(citizen):
-	print("Interacting with citizen")
