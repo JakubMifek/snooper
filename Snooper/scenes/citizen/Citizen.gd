@@ -23,7 +23,6 @@ func _process(delta):
 
 func _changeDirection():
 	var rnd = randi() % 4
-	print(rnd)
 	if rnd == 0:
 		_currentDirection = DIRECTION.left
 	elif rnd == 1:
