@@ -2,12 +2,12 @@
 
 [ext_resource path="res://scripts/Population.gd" type="Script" id=1]
 
-
 [node name="Population" type="Node2D"]
 script = ExtResource( 1 )
 spawnLocation = Vector2( -575.438, -293 )
 
 [node name="Canvas" type="CanvasLayer" parent="."]
+layer = 20
 
 [node name="PopulationCounter" type="RichTextLabel" parent="Canvas"]
 margin_right = 120.0
