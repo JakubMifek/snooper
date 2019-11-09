@@ -42,9 +42,9 @@ func _onBuildingReached():
 	elif self._currentTargetBuilding == warehouseBuilding:
 		self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else houseBuilding if rnd < (1.0 - self._hungryRatio) / 2 + self._hungryRatio else occupationBuilding
 	
-func _moveAccordingToDirection(delta): 
+func _moveAccordingToDirection(delta):
 	var goingToLocation = self._currentTargetBuilding.position
-		
+	
 	var updateAnimation = self._previousTargetLocation != goingToLocation
 	self._previousTargetLocation = goingToLocation
 	
