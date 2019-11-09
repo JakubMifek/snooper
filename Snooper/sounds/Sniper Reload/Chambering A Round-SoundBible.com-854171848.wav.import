@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Chambering A Round-SoundBible.com-854171848.wav-928a19ff73392e2e597d2817c5489627.sample"
+
+[deps]
+
+source_file="res://sounds/Sniper Reload/Chambering A Round-SoundBible.com-854171848.wav"
+dest_files=[ "res://.import/Chambering A Round-SoundBible.com-854171848.wav-928a19ff73392e2e597d2817c5489627.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
