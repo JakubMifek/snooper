@@ -16,6 +16,4 @@ village = NodePath("../Village")
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
 
-[node name="Node2D" parent="." instance=ExtResource( 4 )]
-
 [node name="Village" parent="." instance=ExtResource( 5 )]
