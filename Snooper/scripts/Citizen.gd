@@ -2,12 +2,13 @@ extends Node2D
 
 onready var animation = get_node("AnimationPlayer")
 
-
 const MAX_HUNGRY_RATIO = 0.50
 const MIN_HUNGRY_RATIO = 0.25
 const SPEED = 2.0
 
 # TODO: this can be private most probably
+var death_sounds
+
 var houseBuilding
 var occupationBuilding
 var warehouseBuilding
@@ -78,4 +79,7 @@ func _getAnimationToPlay(normalizedDirection):
 		return "move_left"
 	
 func _kill():
-	pass
+	if death_sounds != null and len(death_sounds):
+		var sound = death_sounds[int(rand_range(0, len(death_sounds)))]
+		sound.position = self.position
+		sound.play()

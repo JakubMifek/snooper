@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://images/tilemaps/Pipoya RPG Tileset 32x32/type_1_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://images/backgrounds/greeen.jpg" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/buildings/House.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/buildings/Granary.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/buildings/Quarry.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sounds/Villager Death Sound/male/deathh.wav" type="AudioStream" id=10]
 
 [node name="Node2D" type="Node2D"]
 
@@ -68,3 +69,13 @@ position = Vector2( 625.184, 410.241 )
 
 [node name="Quarry" parent="." instance=ExtResource( 9 )]
 position = Vector2( 918.561, -106.371 )
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Man" type="Node2D" parent="Sounds"]
+
+[node name="01" type="AudioStreamPlayer2D" parent="Sounds/Man"]
+stream = ExtResource( 10 )
+volume_db = 10.0
+
+[node name="Citizens" type="Node2D" parent="."]
