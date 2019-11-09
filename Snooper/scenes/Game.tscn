@@ -13,9 +13,7 @@ script = ExtResource( 1 )
 
 [node name="Population" parent="." instance=ExtResource( 3 )]
 
-[node name="Control" parent="." instance=ExtResource( 4 )]
-
-[node name="Node2D" parent="." instance=ExtResource( 4 )]
+[node name="UI" parent="." instance=ExtResource( 4 )]
 
 [node name="Village" parent="." instance=ExtResource( 5 )]
 script = ExtResource( 1 )
