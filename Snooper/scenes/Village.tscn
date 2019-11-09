@@ -20,7 +20,7 @@ texture = ExtResource( 2 )
 [node name="MainHouse" parent="." instance=ExtResource( 3 )]
 position = Vector2( 337.925, 274.95 )
 
-[node name="Masonry" parent="." instance=ExtResource( 4 )]
+[node name="Quarry" parent="." instance=ExtResource( 4 )]
 position = Vector2( 897.674, 493.849 )
 
 [node name="Lumbermill" parent="." instance=ExtResource( 5 )]

@@ -4,7 +4,7 @@ enum DIRECTION {
 	house, occupation
 }
 
-const speed = 5.0
+const speed = 3.0
 
 var houseLocation = Vector2()
 var occupationLocation = Vector2()
@@ -20,7 +20,7 @@ func _changeDirection():
 func _moveAccordingToDirection(delta): 
 	var goingToLocation = houseLocation if _currentDirection == DIRECTION.house else occupationLocation
 	var direction = goingToLocation - self.position
-	if (direction.length() < 1.0):
+	if (direction.length() < 3.0):
 		self._changeDirection()
 	else:
 		self._moveToDirection(direction, delta)
