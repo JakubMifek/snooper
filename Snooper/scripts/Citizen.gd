@@ -14,8 +14,10 @@ var houseLocation = Vector2()
 var occupationLocation = Vector2()
 var foodLocation =  Vector2()
 
+# TODO: we need to actually use this
 var _hungryRatio = randf() * (MAX_HUNGRY_RATIO - MIN_HUNGRY_RATIO) + MIN_HUNGRY_RATIO
 var _currentDirection = DIRECTION.occupation
+var _previousTargetLocation
 
 func _process(delta):
 	_moveAccordingToDirection(delta)
@@ -37,29 +39,30 @@ func _moveAccordingToDirection(delta):
 		goingToLocation = self.occupationLocation
 	elif _currentDirection == DIRECTION.food:
 		goingToLocation = self.foodLocation
+		
+	var updateAnimation = self._previousTargetLocation != goingToLocation
+	self._previousTargetLocation = goingToLocation
 	
 	var direction = goingToLocation - self.position
 	if (direction.length() < 3.0):
 		self._changeDirection()
 	else:
-		self._moveToDirection(direction, delta)
+		self._moveToDirection(direction, delta, updateAnimation)
 	
-func _moveToDirection(direction, delta):
+func _moveToDirection(direction, delta, updateAnimation):
 	var normalizedDirection = direction.normalized()
 	var moveVector = normalizedDirection * SPEED
-	self._updateAnimation(normalizedDirection)
+	if updateAnimation:
+		self._updateAnimation(normalizedDirection)
 	self.position += moveVector
 	
 func _updateAnimation(normalizedDirection):
 	var animationToPlay = self._getAnimationToPlay(normalizedDirection)
-	print(animation.assigned_animation + " : " + animationToPlay)
 	if (animation.assigned_animation != animationToPlay):
     	animation.play(animationToPlay)
 		
 func _getAnimationToPlay(normalizedDirection):
 	var radians = normalizedDirection.angle()
-	print(radians)
-	print((3.0/4)*PI)
 	
 	if PI/4 >= radians and radians >= -PI/4:
 		return "move_right"
