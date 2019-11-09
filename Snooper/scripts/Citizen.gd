@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var animation = get_node("AnimationPlayer")
+
 enum DIRECTION {
 	house, occupation, food
 }
@@ -45,5 +47,26 @@ func _moveAccordingToDirection(delta):
 func _moveToDirection(direction, delta):
 	var normalizedDirection = direction.normalized()
 	var moveVector = normalizedDirection * SPEED
-
+	self._updateAnimation(normalizedDirection)
 	self.position += moveVector
+	
+func _updateAnimation(normalizedDirection):
+	var animationToPlay = self._getAnimationToPlay(normalizedDirection)
+	print(animation.assigned_animation + " : " + animationToPlay)
+	if (animation.assigned_animation != animationToPlay):
+    	animation.play(animationToPlay)
+		
+func _getAnimationToPlay(normalizedDirection):
+	var radians = normalizedDirection.angle()
+	print(radians)
+	print((3.0/4)*PI)
+	
+	if PI/4 >= radians and radians >= -PI/4:
+		return "move_right"
+	elif ((-PI/4) > radians) and (radians > ((-3.0/4)*PI)):
+		return "move_up"
+	elif (3.0/4)*PI > radians and radians > PI/4:
+		return "move_down"
+	else:
+		return "move_left"
+	
