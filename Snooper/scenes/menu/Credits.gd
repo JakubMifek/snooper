@@ -7,4 +7,4 @@ func _input(event):
 			
 
 func _on_CancelButton_button_down():
-	get_tree().change_scene("res://scenes/Menu.tscn")
+	get_tree().change_scene("res://scenes/menu/Menu.tscn")

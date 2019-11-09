@@ -9,7 +9,7 @@ func _on_StartButton_button_down():
 	get_tree().change_scene("res://scenes/Game.tscn")
 
 func _on_CreaditsButton_button_down():
-	get_tree().change_scene("res://scenes/Credits.tscn")
+	get_tree().change_scene("res://scenes/menu/Credits.tscn")
 
 func _on_ExitButton_button_down():
 	get_tree().quit()
