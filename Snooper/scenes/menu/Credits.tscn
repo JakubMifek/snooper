@@ -17,7 +17,11 @@ margin_bottom = 622.0
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Authors:[/center]
-Ano opravdu jsme na tom dělali. :-D
+Jan Brýda
+Michal Fibich
+Julius Flimmel
+Jakub Mifek
+Dalibor Zeman
 
 [center]Resources:[/center]
 
@@ -34,7 +38,11 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 "
 text = "Authors:
-Ano opravdu jsme na tom dělali. :-D
+Jan Brýda
+Michal Fibich
+Julius Flimmel
+Jakub Mifek
+Dalibor Zeman
 
 Resources:
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://images/ui/sight.png" type="Texture" id=1]
 [ext_resource path="res://scripts/ui/sight.gd" type="Script" id=2]
@@ -7,7 +7,11 @@
 [ext_resource path="res://sounds/Sniper Shot/ren.ogg" type="AudioStream" id=5]
 [ext_resource path="res://sounds/Sniper Shot/ren2.ogg" type="AudioStream" id=6]
 [ext_resource path="res://sounds/Sniper Shot/ren3.ogg" type="AudioStream" id=7]
-[ext_resource path="res://scripts/ui/MainControls.gd" type="Script" id=8]
+[ext_resource path="res://scripts/ui/CooldownBar.gd" type="Script" id=8]
+[ext_resource path="res://scripts/ui/MainControls.gd" type="Script" id=9]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.87451, 0.160784, 0.160784, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -44,7 +48,16 @@ stream = ExtResource( 6 )
 [node name="Shot_03" type="AudioStreamPlayer" parent="CanvasLayer2"]
 stream = ExtResource( 7 )
 
+[node name="CooldownBar" type="ProgressBar" parent="CanvasLayer2"]
+margin_left = 178.509
+margin_top = 156.218
+margin_right = 505.509
+margin_bottom = 180.218
+custom_styles/fg = SubResource( 1 )
+percent_visible = false
+script = ExtResource( 8 )
+
 [node name="MainControls" type="Control" parent="."]
 margin_right = 91.0
 margin_bottom = 35.0
-script = ExtResource( 8 )
+script = ExtResource( 9 )

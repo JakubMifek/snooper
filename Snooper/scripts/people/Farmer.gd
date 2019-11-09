@@ -6,7 +6,8 @@ extends "res://scripts/Citizen.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	self.death_sounds = get_node('/root/Root/Village/Sounds/Woman').get_children()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
