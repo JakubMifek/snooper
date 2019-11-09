@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/Camera.gd" type="Script" id=1]
+[ext_resource path="res://scenes/camera/Camera.gd" type="Script" id=1]
 [ext_resource path="res://images/backgrounds/test.jpg" type="Texture" id=2]
-[ext_resource path="res://images/sprites/citizen_mock.png" type="Texture" id=3]
-[ext_resource path="res://scenes/NPC.gd" type="Script" id=4]
 
-[node name="SceneRoot" type="Node2D"]
+[node name="Root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 1, 0 )
@@ -25,9 +23,3 @@ script = ExtResource( 1 )
 position = Vector2( 265.634, 182.149 )
 scale = Vector2( 2.10681, 2.03302 )
 texture = ExtResource( 2 )
-
-[node name="NPC" type="Sprite" parent="."]
-position = Vector2( -52.2819, 29.612 )
-scale = Vector2( 0.02, 0.02 )
-texture = ExtResource( 3 )
-script = ExtResource( 4 )
