@@ -30,7 +30,9 @@ position = Vector2( 226.049, 199.216 )
 [node name="Farm" parent="." instance=ExtResource( 5 )]
 position = Vector2( 120.659, 491.128 )
 
-[node name="House01" parent="." instance=ExtResource( 6 )]
+[node name="House01" parent="." groups=[
+"houses",
+] instance=ExtResource( 6 )]
 position = Vector2( 430.038, 47.785 )
 
 [node name="House02" parent="." groups=[
