@@ -1,5 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://images/ui/tutorial.png" type="Texture" id=1]
 
 [node name="Control2" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1919.0
+margin_bottom = 1082.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 961.259, 540.901 )
+scale = Vector2( 1.53991, 1.53639 )
+texture = ExtResource( 1 )
