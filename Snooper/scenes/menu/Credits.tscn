@@ -25,11 +25,7 @@ Julius Flimmel
 Jakub Mifek
 Dalibor Zeman
 
-[center]Resources:[/center]
 
-Low Poly Animated Guns
-Autor: quaternius
-link: https://opengameart.org/content/low-poly-animated-guns
 
 [center]Game Engine:[/center]
 This game uses Godot Engine, available under the following license:
@@ -42,7 +38,87 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-"
+
+
+[center]Resources:[/center]
+
+- Low Poly Animated Guns
+	Autor: quaternius
+	link: https://opengameart.org/content/low-poly-animated-guns
+
+- sniper shooting sound
+	https://opengameart.org/content/q009s-weapon-sounds
+	Q009
+
+- sniper reload sound
+	https://opengameart.org/content/shotgun-shoot-reload
+	Mike Koenig (Soundbible)
+
+- sniper shot with no ammo
+	https://opengameart.org/content/q009s-weapon-sounds
+	Q009
+
+- villager death sounds
+	MALE
+		https://opengameart.org/content/11-male-human-paindeath-sounds
+		Michel Baradari
+	FEMALE
+		https://opengameart.org/content/dying-voices-female-rpg
+		Galacti-Chron
+
+- main menu button hover sound
+	https://opengameart.org/content/click-ui-menu-sfx-yesnoselect
+	qubodup
+
+- main menu button click sound
+	https://opengameart.org/content/chaingun-pistol-rifle-shotgun-shots
+	Michel Baradari
+
+- main menu music
+	https://opengameart.org/content/epic-main-menu-theme-loop
+	CleytonKauffman
+	
+- resource picked up
+	https://opengameart.org/content/3-item-sounds
+	Michel Baradari
+
+- resource dropped
+	https://opengameart.org/content/3-item-sounds
+	Michel Baradari
+
+- villager eats from granary
+	https://opengameart.org/content/miscmenu-sci-fi-sounds
+	Brandon Morris
+
+- footsteps of villagers
+	https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud
+	TinyWorlds
+
+- dialog menu opened & next page & closed
+	https://opengameart.org/content/book-flip-sounds
+	Voltiment555
+
+- gameplay music tracks (5+ for random options)
+	https://opengameart.org/content/free-music-pack
+	tricksntraps
+	https://opengameart.org/content/frostbite-medieval-soundtrack
+	tridentkeep
+	https://opengameart.org/content/town-theme
+	remaxim
+	https://opengameart.org/content/solemn-war-music
+	el-corleo
+
+- Crow Caw
+	https://opengameart.org/content/crow-caw
+	zeroisnotnull
+	
+- Falstin is a 2019 font that was created by Pixel Kitchen in 2019. It was added to FontSpace on May 26, 2019
+	Falstin is licensed as Public Domain, which means it is 100% free for both personal use and commercial use. 
+	https://www.fontspace.com/falstin-font-f34309
+	
+- font
+	http://www.zone38.net/
+	codeman38 | cody@zone38.net"
 text = "Authors:
 Jan Brýda
 Michal Fibich
@@ -50,11 +126,7 @@ Julius Flimmel
 Jakub Mifek
 Dalibor Zeman
 
-Resources:
 
-Low Poly Animated Guns
-Autor: quaternius
-link: https://opengameart.org/content/low-poly-animated-guns
 
 Game Engine:
 This game uses Godot Engine, available under the following license:
@@ -67,7 +139,87 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-"
+
+
+Resources:
+
+- Low Poly Animated Guns
+	Autor: quaternius
+	link: https://opengameart.org/content/low-poly-animated-guns
+
+- sniper shooting sound
+	https://opengameart.org/content/q009s-weapon-sounds
+	Q009
+
+- sniper reload sound
+	https://opengameart.org/content/shotgun-shoot-reload
+	Mike Koenig (Soundbible)
+
+- sniper shot with no ammo
+	https://opengameart.org/content/q009s-weapon-sounds
+	Q009
+
+- villager death sounds
+	MALE
+		https://opengameart.org/content/11-male-human-paindeath-sounds
+		Michel Baradari
+	FEMALE
+		https://opengameart.org/content/dying-voices-female-rpg
+		Galacti-Chron
+
+- main menu button hover sound
+	https://opengameart.org/content/click-ui-menu-sfx-yesnoselect
+	qubodup
+
+- main menu button click sound
+	https://opengameart.org/content/chaingun-pistol-rifle-shotgun-shots
+	Michel Baradari
+
+- main menu music
+	https://opengameart.org/content/epic-main-menu-theme-loop
+	CleytonKauffman
+	
+- resource picked up
+	https://opengameart.org/content/3-item-sounds
+	Michel Baradari
+
+- resource dropped
+	https://opengameart.org/content/3-item-sounds
+	Michel Baradari
+
+- villager eats from granary
+	https://opengameart.org/content/miscmenu-sci-fi-sounds
+	Brandon Morris
+
+- footsteps of villagers
+	https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud
+	TinyWorlds
+
+- dialog menu opened & next page & closed
+	https://opengameart.org/content/book-flip-sounds
+	Voltiment555
+
+- gameplay music tracks (5+ for random options)
+	https://opengameart.org/content/free-music-pack
+	tricksntraps
+	https://opengameart.org/content/frostbite-medieval-soundtrack
+	tridentkeep
+	https://opengameart.org/content/town-theme
+	remaxim
+	https://opengameart.org/content/solemn-war-music
+	el-corleo
+
+- Crow Caw
+	https://opengameart.org/content/crow-caw
+	zeroisnotnull
+	
+- Falstin is a 2019 font that was created by Pixel Kitchen in 2019. It was added to FontSpace on May 26, 2019
+	Falstin is licensed as Public Domain, which means it is 100% free for both personal use and commercial use. 
+	https://www.fontspace.com/falstin-font-f34309
+	
+- font
+	http://www.zone38.net/
+	codeman38 | cody@zone38.net"
 script = ExtResource( 3 )
 
 [node name="CancelButton" type="Button" parent="."]
