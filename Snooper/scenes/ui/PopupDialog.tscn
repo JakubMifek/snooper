@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/ui/Popup.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/PopupDialog.gd" type="Script" id=2]
+[ext_resource path="res://fonts/PixelFontSmall.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/ui/CenterInParent.gd" type="Script" id=4]
+
+[node name="Control" type="Control"]
+margin_left = 466.0
+margin_top = 780.0
+margin_right = 1466.0
+margin_bottom = 1080.0
+script = ExtResource( 1 )
+
+[node name="PopupDialog" type="PopupDialog" parent="."]
+visible = true
+margin_right = 1000.0
+margin_bottom = 300.0
+script = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PopupDialog"]
+margin_left = 22.0
+margin_top = -120.0
+margin_right = 422.0
+margin_bottom = 279.0
+custom_fonts/italics_font = ExtResource( 3 )
+custom_fonts/bold_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "Test Textu
+sadsdadasdsa
+dsasdasd
+Ludum raede adsad aadcawcwadwa dwa daw dwadawd awda wdwad awdwad wad wadaw dwa dwa dwad a
+
+awdLorem ipsumdwacwacawdcaw awdwadwadwadwa d awdwa awd aw d"
+text = "Test Textu
+sadsdadasdsa
+dsasdasd
+Ludum raede adsad aadcawcwadwa dwa daw dwadawd awda wdwad awdwad wad wadaw dwa dwa dwad a
+
+awdLorem ipsumdwacwacawdcaw awdwadwadwadwa d awdwa awd aw d"
+script = ExtResource( 4 )
