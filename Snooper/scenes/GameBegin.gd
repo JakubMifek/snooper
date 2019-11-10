@@ -3,12 +3,13 @@ extends Node2D
 var wheat
 var stone
 var wood
+onready var UpgradeButton = get_node('/root/Root/UI/CanvasLayer2/UpgradeButton')
 
 func _show_upgrade():
-	pass
+	UpgradeButton.visible = true
 
 func _check_if_all_reached():
-	if stone.amount >= stone.target and wood.amount >= wood.target:
+	if Stats.can_upgrade():
 		self._show_upgrade()
 
 func _ready():
@@ -23,11 +24,16 @@ func _ready():
 	stone.capacity = 5
 	wood.capacity = 5
 	
-	wheat.amount = 10
-	stone.amount = 0
-	wood.amount = 0
-	
-	stone.target = 4
-	wood.target = 4
+	stone.target = 0
+	wood.target = 0
 	
 	stone.connect('target_reached', self, '_check_if_all_reached')
+	wood.connect('target_reached', self, '_check_if_all_reached')
+	
+	wheat.set_amount(10)
+	stone.set_amount(0)
+	wood.set_amount(0)
+	
+	stone._upgrades = [{'target': 16, 'capacity': 20}, {'target': 64, 'capacity': 70}]
+	wood._upgrades = [{'target': 12, 'capacity': 15}, {'target': 72, 'capacity': 80}]
+	
