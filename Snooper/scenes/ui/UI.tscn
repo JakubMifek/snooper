@@ -1,19 +1,18 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://images/ui/sight.png" type="Texture" id=1]
 [ext_resource path="res://scripts/ui/sight.gd" type="Script" id=2]
 [ext_resource path="res://fonts/PixelFontSmall.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scripts/ui/ResourcesText.gd" type="Script" id=4]
-[ext_resource path="res://sounds/Sniper Reload/Chambering A Round-SoundBible.com-854171848.wav" type="AudioStream" id=5]
-[ext_resource path="res://sounds/Sniper Shot/ren.ogg" type="AudioStream" id=6]
-[ext_resource path="res://sounds/Sniper Shot/ren2.ogg" type="AudioStream" id=7]
-[ext_resource path="res://sounds/Sniper Shot/ren3.ogg" type="AudioStream" id=8]
-[ext_resource path="res://sounds/Sniper Shot with no Ammo/outofammo.ogg" type="AudioStream" id=9]
-[ext_resource path="res://scripts/ui/CooldownBar.gd" type="Script" id=10]
-[ext_resource path="res://images/ui/bullet_2.png" type="Texture" id=11]
-[ext_resource path="res://images/sprites/upgrade_button.png" type="Texture" id=12]
-[ext_resource path="res://scenes/ui/UpgradeButton.gd" type="Script" id=13]
-[ext_resource path="res://scripts/ui/MainControls.gd" type="Script" id=14]
+[ext_resource path="res://scenes/ui/UpgradeButton.gd" type="Script" id=5]
+[ext_resource path="res://sounds/Sniper Reload/Chambering A Round-SoundBible.com-854171848.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/Sniper Shot/ren.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sounds/Sniper Shot/ren2.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sounds/Sniper Shot/ren3.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sounds/Sniper Shot with no Ammo/outofammo.ogg" type="AudioStream" id=10]
+[ext_resource path="res://scripts/ui/CooldownBar.gd" type="Script" id=11]
+[ext_resource path="res://images/ui/bullet_2.png" type="Texture" id=12]
+[ext_resource path="res://scripts/ui/MainControls.gd" type="Script" id=13]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.87451, 0.635294, 0.160784, 1 )
@@ -42,20 +41,29 @@ Wood: 2
 Stone: 3"
 script = ExtResource( 4 )
 
-[node name="Reload" type="AudioStreamPlayer" parent="CanvasLayer2"]
-stream = ExtResource( 5 )
+[node name="UpgradeButton" type="RichTextLabel" parent="CanvasLayer2"]
+margin_left = -533.0
+margin_top = 232.0
+margin_right = -380.0
+margin_bottom = 254.0
+custom_fonts/normal_font = ExtResource( 3 )
+text = "[F1]: Upgrade"
+script = ExtResource( 5 )
 
-[node name="Shot_01" type="AudioStreamPlayer" parent="CanvasLayer2"]
+[node name="Reload" type="AudioStreamPlayer" parent="CanvasLayer2"]
 stream = ExtResource( 6 )
 
-[node name="Shot_02" type="AudioStreamPlayer" parent="CanvasLayer2"]
+[node name="Shot_01" type="AudioStreamPlayer" parent="CanvasLayer2"]
 stream = ExtResource( 7 )
 
-[node name="Shot_03" type="AudioStreamPlayer" parent="CanvasLayer2"]
+[node name="Shot_02" type="AudioStreamPlayer" parent="CanvasLayer2"]
 stream = ExtResource( 8 )
 
-[node name="Shot_No_Ammo" type="AudioStreamPlayer" parent="CanvasLayer2"]
+[node name="Shot_03" type="AudioStreamPlayer" parent="CanvasLayer2"]
 stream = ExtResource( 9 )
+
+[node name="Shot_No_Ammo" type="AudioStreamPlayer" parent="CanvasLayer2"]
+stream = ExtResource( 10 )
 
 [node name="CooldownBar" type="ProgressBar" parent="CanvasLayer2"]
 editor/display_folded = true
@@ -66,19 +74,15 @@ margin_bottom = 228.0
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="bullet_2" type="Sprite" parent="CanvasLayer2/CooldownBar"]
 position = Vector2( 71.5843, 36.0497 )
 rotation = 1.5708
 scale = Vector2( 0.140203, 0.277683 )
-texture = ExtResource( 11 )
-
-[node name="UpgradeButton" type="Sprite" parent="CanvasLayer2"]
 texture = ExtResource( 12 )
-script = ExtResource( 13 )
 
 [node name="MainControls" type="Control" parent="."]
 margin_right = 91.0
 margin_bottom = 35.0
-script = ExtResource( 14 )
+script = ExtResource( 13 )
