@@ -19,22 +19,18 @@ script = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PopupDialog"]
 margin_left = 22.0
-margin_top = -120.0
-margin_right = 422.0
+margin_top = 27.0
+margin_right = 985.0
 margin_bottom = 279.0
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
-bbcode_text = "Test Textu
-sadsdadasdsa
-dsasdasd
-Ludum raede adsad aadcawcwadwa dwa daw dwadawd awda wdwad awdwad wad wadaw dwa dwa dwad a
+bbcode_text = "“It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is the most adaptable to change.”
+ – Charles Darwin
 
-awdLorem ipsumdwacwacawdcaw awdwadwadwadwa d awdwa awd aw d"
-text = "Test Textu
-sadsdadasdsa
-dsasdasd
-Ludum raede adsad aadcawcwadwa dwa daw dwadawd awda wdwad awdwad wad wadaw dwa dwa dwad a
+You are the sniper, you choose, you decide!"
+text = "“It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is the most adaptable to change.”
+ – Charles Darwin
 
-awdLorem ipsumdwacwacawdcaw awdwadwadwadwa d awdwa awd aw d"
+You are the sniper, you choose, you decide!"
 scroll_active = false
 script = ExtResource( 4 )
