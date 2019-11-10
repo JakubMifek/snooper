@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/menu/Credits.gd" type="Script" id=1]
 [ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/menu/CreditsRichTExtLabel.gd" type="Script" id=3]
+[ext_resource path="res://scripts/ui/CenterInScreen.gd" type="Script" id=4]
 
 [node name="CreditsControl" type="Control"]
 anchor_right = 1.0
@@ -61,9 +62,10 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 script = ExtResource( 3 )
 
 [node name="CancelButton" type="Button" parent="."]
-margin_left = 687.964
-margin_top = 647.583
-margin_right = 741.964
-margin_bottom = 667.583
+margin_left = 56.4656
+margin_top = 533.026
+margin_right = 110.466
+margin_bottom = 553.026
 text = "Cancel"
+script = ExtResource( 4 )
 [connection signal="button_down" from="CancelButton" to="." method="_on_CancelButton_button_down"]
