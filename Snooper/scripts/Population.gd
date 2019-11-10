@@ -85,7 +85,7 @@ func add_to_population(citizen):
 	_setText()
 
 func spawn_citizen(occupation, movement, hungryness, diligence, productivity):
-	village.spawnCitizen(occupation, movement, hungryness, diligence, productivity)
+	village.spawnCitizen(occupation, hungryness, diligence, movement, productivity)
 
 func _spawnCitizen(occupation=null):
 	var citizen = village.spawnCitizen(occupation)
