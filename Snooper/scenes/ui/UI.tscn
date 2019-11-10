@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://images/ui/sight.png" type="Texture" id=1]
 [ext_resource path="res://fonts/PixelFontSmall.tres" type="DynamicFont" id=2]
@@ -13,8 +13,11 @@
 [ext_resource path="res://images/ui/bullet_2.png" type="Texture" id=11]
 [ext_resource path="res://scenes/ui/PopupDialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/ui/IndividualDesc.gd" type="Script" id=13]
-[ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=14]
-[ext_resource path="res://scripts/ui/MainControls.gd" type="Script" id=15]
+[ext_resource path="res://images/backgrounds/shade.png" type="Texture" id=14]
+[ext_resource path="res://fonts/PixelFontBig.tres" type="DynamicFont" id=15]
+[ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=16]
+[ext_resource path="res://scenes/ui/MenuButton.gd" type="Script" id=17]
+[ext_resource path="res://scripts/ui/MainControls.gd" type="Script" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.87451, 0.635294, 0.160784, 1 )
@@ -97,18 +100,38 @@ margin_bottom = 600.0
 custom_fonts/normal_font = ExtResource( 2 )
 script = ExtResource( 13 )
 
-[node name="EndGameText" type="RichTextLabel" parent="CanvasLayer2"]
+[node name="EndGame" type="Control" parent="CanvasLayer2"]
 visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer2/EndGame"]
+position = Vector2( 954.884, 547.264 )
+scale = Vector2( 4.13587, 3.13475 )
+texture = ExtResource( 14 )
+
+[node name="EndGameText" type="RichTextLabel" parent="CanvasLayer2/EndGame"]
 margin_left = 462.0
 margin_top = 491.0
 margin_right = 1687.0
 margin_bottom = 604.0
-custom_fonts/normal_font = ExtResource( 14 )
+custom_fonts/normal_font = ExtResource( 15 )
 bbcode_text = "YOU HAVE FAILED"
 text = "YOU HAVE FAILED"
 scroll_active = false
 
+[node name="MenuButton" type="MenuButton" parent="CanvasLayer2/EndGame"]
+margin_left = 705.0
+margin_top = 697.0
+margin_right = 1233.0
+margin_bottom = 847.0
+custom_fonts/font = ExtResource( 16 )
+text = "Main Menu"
+flat = false
+script = ExtResource( 17 )
+
 [node name="MainControls" type="Control" parent="."]
 margin_right = 91.0
 margin_bottom = 35.0
-script = ExtResource( 15 )
+script = ExtResource( 18 )
+[connection signal="pressed" from="CanvasLayer2/EndGame/MenuButton" to="CanvasLayer2/EndGame/MenuButton" method="_on_MenuButton_pressed"]
