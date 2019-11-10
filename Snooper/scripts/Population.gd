@@ -63,7 +63,7 @@ func _killCitizens(position):
 		d.play()
 		return
 	
-	Stats.add_resource(Stats.RESOURCES.population, peopleToKill)
+	Stats.add_resource(Stats.RESOURCES.population, -len(peopleToKill))
 	while len(peopleToKill):
 		var idx = peopleToKill.pop_back()
 		var personToKill = population[idx]
