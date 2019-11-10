@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/menu/Credits.gd" type="Script" id=1]
-[ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/lunchds.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scenes/menu/CreditsRichTExtLabel.gd" type="Script" id=3]
 [ext_resource path="res://scripts/ui/CenterInScreen.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
 
 [node name="CreditsControl" type="Control"]
 anchor_right = 1.0
@@ -15,7 +19,7 @@ margin_left = 49.0
 margin_top = 46.0
 margin_right = 1318.0
 margin_bottom = 622.0
-custom_fonts/normal_font = ExtResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Authors:[/center]
 Jan Brýda
@@ -70,10 +74,11 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 script = ExtResource( 3 )
 
 [node name="CancelButton" type="Button" parent="."]
-margin_left = 56.4656
-margin_top = 636.271
-margin_right = 110.466
-margin_bottom = 656.271
+margin_left = 56.0
+margin_top = 636.0
+margin_right = 239.0
+margin_bottom = 711.0
+custom_fonts/font = SubResource( 1 )
 text = "Cancel"
 script = ExtResource( 4 )
 [connection signal="button_down" from="CancelButton" to="." method="_on_CancelButton_button_down"]

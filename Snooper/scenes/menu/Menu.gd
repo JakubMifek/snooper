@@ -83,14 +83,17 @@ func _on_StartButton_button_down():
 	_on_any_btn_click()
 	ClickSound.play()
 	T_start.start()
+	get_node("AnimatedSprite").animation = "default"
 
 func _on_CreaditsButton_button_down():
 	_on_any_btn_click()
 	ClickSound.play()
 	T_credits.start()
+	get_node("AnimatedSprite").animation = "default"
 
 func _on_ExitButton_button_down():
 	ThemeSong.stop()
 	_on_any_btn_click()
 	ClickSound.play()
 	T_exit.start()
+	get_node("AnimatedSprite").animation = "default"

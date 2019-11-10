@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Population.gd" type="Script" id=1]
+[ext_resource path="res://fonts/lunchds.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
 
 [node name="Population" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,8 +15,8 @@ spawnLocation = Vector2( -575.438, -293 )
 layer = 20
 
 [node name="PopulationCounter" type="RichTextLabel" parent="Canvas"]
-margin_right = 120.0
-margin_bottom = 40.0
-rect_scale = Vector2( 3, 3 )
+margin_right = 467.0
+margin_bottom = 51.0
+custom_fonts/normal_font = SubResource( 1 )
 text = "Population: 5"
 scroll_active = false

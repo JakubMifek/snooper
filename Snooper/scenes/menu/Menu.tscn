@@ -1,43 +1,52 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu/MenuCenterControl.gd" type="Script" id=2]
-[ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/lunchds.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://sounds/Main Menu Click/rifle.wav" type="AudioStream" id=4]
 [ext_resource path="res://sounds/Main Menu Hover/hover.wav" type="AudioStream" id=5]
 [ext_resource path="res://music/Main Menu Theme/Mensch [ Main Menu ].wav" type="AudioStream" id=6]
-[ext_resource path="res://images/menu/sniper/0001.png" type="Texture" id=7]
-[ext_resource path="res://images/menu/sniper/0002.png" type="Texture" id=8]
-[ext_resource path="res://images/menu/sniper/0003.png" type="Texture" id=9]
-[ext_resource path="res://images/menu/sniper/0004.png" type="Texture" id=10]
-[ext_resource path="res://images/menu/sniper/0005.png" type="Texture" id=11]
-[ext_resource path="res://images/menu/sniper/0006.png" type="Texture" id=12]
-[ext_resource path="res://images/menu/sniper/0007.png" type="Texture" id=13]
-[ext_resource path="res://images/menu/sniper/0008.png" type="Texture" id=14]
-[ext_resource path="res://images/menu/sniper/0009.png" type="Texture" id=15]
-[ext_resource path="res://images/menu/sniper/0010.png" type="Texture" id=16]
-[ext_resource path="res://images/menu/sniper/0011.png" type="Texture" id=17]
-[ext_resource path="res://images/menu/sniper/0012.png" type="Texture" id=18]
-[ext_resource path="res://images/menu/sniper/0013.png" type="Texture" id=19]
-[ext_resource path="res://images/menu/sniper/0014.png" type="Texture" id=20]
-[ext_resource path="res://images/menu/sniper/0015.png" type="Texture" id=21]
-[ext_resource path="res://images/menu/sniper/0016.png" type="Texture" id=22]
-[ext_resource path="res://images/menu/sniper/0017.png" type="Texture" id=23]
-[ext_resource path="res://images/menu/sniper/0018.png" type="Texture" id=24]
-[ext_resource path="res://images/menu/sniper/0019.png" type="Texture" id=25]
-[ext_resource path="res://images/menu/sniper/0020.png" type="Texture" id=26]
-[ext_resource path="res://images/menu/sniper/0021.png" type="Texture" id=27]
-[ext_resource path="res://images/menu/sniper/0022.png" type="Texture" id=28]
-[ext_resource path="res://images/menu/sniper/0023.png" type="Texture" id=29]
-[ext_resource path="res://images/menu/sniper/0024.png" type="Texture" id=30]
-[ext_resource path="res://images/menu/sniper/0025.png" type="Texture" id=31]
+[ext_resource path="res://images/menu/sniper/0003.png" type="Texture" id=7]
+[ext_resource path="res://images/menu/sniper/0004.png" type="Texture" id=8]
+[ext_resource path="res://images/menu/sniper/0005.png" type="Texture" id=9]
+[ext_resource path="res://images/menu/sniper/0006.png" type="Texture" id=10]
+[ext_resource path="res://images/menu/sniper/0007.png" type="Texture" id=11]
+[ext_resource path="res://images/menu/sniper/0008.png" type="Texture" id=12]
+[ext_resource path="res://images/menu/sniper/0009.png" type="Texture" id=13]
+[ext_resource path="res://images/menu/sniper/0010.png" type="Texture" id=14]
+[ext_resource path="res://images/menu/sniper/0011.png" type="Texture" id=15]
+[ext_resource path="res://images/menu/sniper/0012.png" type="Texture" id=16]
+[ext_resource path="res://images/menu/sniper/0013.png" type="Texture" id=17]
+[ext_resource path="res://images/menu/sniper/0014.png" type="Texture" id=18]
+[ext_resource path="res://images/menu/sniper/0015.png" type="Texture" id=19]
+[ext_resource path="res://images/menu/sniper/0016.png" type="Texture" id=20]
+[ext_resource path="res://images/menu/sniper/0017.png" type="Texture" id=21]
+[ext_resource path="res://images/menu/sniper/0018.png" type="Texture" id=22]
+[ext_resource path="res://images/menu/sniper/0019.png" type="Texture" id=23]
+[ext_resource path="res://images/menu/sniper/0020.png" type="Texture" id=24]
+[ext_resource path="res://images/menu/sniper/0021.png" type="Texture" id=25]
+[ext_resource path="res://images/menu/sniper/0022.png" type="Texture" id=26]
+[ext_resource path="res://images/menu/sniper/0023.png" type="Texture" id=27]
+[ext_resource path="res://images/menu/sniper/0024.png" type="Texture" id=28]
+[ext_resource path="res://images/menu/sniper/0025.png" type="Texture" id=29]
+[ext_resource path="res://images/menu/sniper/0001.png" type="Texture" id=30]
+[ext_resource path="res://images/menu/0001.png" type="Texture" id=31]
 [ext_resource path="res://scenes/menu/AnimatedSniperRifle.gd" type="Script" id=32]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "default",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": true,
+"name": "idle",
 "speed": 5.0
 } ]
 
@@ -56,7 +65,7 @@ margin_left = 25.0
 margin_top = 50.0
 margin_right = 375.0
 margin_bottom = 100.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Start Game"
 
 [node name="CreaditsButton" type="Button" parent="Control"]
@@ -64,7 +73,7 @@ margin_left = 50.0
 margin_top = 150.0
 margin_right = 350.0
 margin_bottom = 200.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Credits"
 
 [node name="ExitButton" type="Button" parent="Control"]
@@ -72,7 +81,7 @@ margin_left = 50.0
 margin_top = 250.0
 margin_right = 350.0
 margin_bottom = 300.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Exit"
 
 [node name="Click" type="AudioStreamPlayer" parent="Control"]
@@ -86,8 +95,8 @@ stream = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 732.047, 136.649 )
-frames = SubResource( 1 )
-frame = 2
+frames = SubResource( 2 )
+animation = "idle"
 playing = true
 script = ExtResource( 32 )
 [connection signal="button_down" from="Control/StartButton" to="." method="_on_StartButton_button_down"]
