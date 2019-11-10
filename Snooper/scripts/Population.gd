@@ -24,9 +24,9 @@ func _on_citizen_death():
 			
 	_setText()
 
-func _killCitizens(position):
-	var peopleToKill = []
+func findPeople(position):
 	var idx = -1
+	var ret = []
 	
 	for person in population:
 		var sprite = person.get_node('Sprite')
@@ -38,7 +38,12 @@ func _killCitizens(position):
 		if \
 		  person.position[0] - width/2.0 < position[0] and position[0] < person.position[0] + width/2.0 and \
 		  person.position[1] - height/2.0 < position[1] and position[1] < person.position[1] + height/2.0:
-			peopleToKill.append(idx)
+			ret.append(idx)
+			
+	return ret
+
+func _killCitizens(position):
+	var peopleToKill = findPeople(position)
 	
 	if len(peopleToKill) == 0:
 		var d = miss.instance()
@@ -48,7 +53,7 @@ func _killCitizens(position):
 		return
 	
 	while len(peopleToKill):
-		idx = peopleToKill.pop_back()
+		var idx = peopleToKill.pop_back()
 		var personToKill = population[idx]
 		personToKill._kill()
 
