@@ -6,7 +6,7 @@ extends RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.rect_position = Vector2(OS.window_size[0]-self.rect_size[0], 0)
+	pass 
 
 func _process(delta):
 	var resourcesText = ""
