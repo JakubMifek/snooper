@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu/MenuCenterControl.gd" type="Script" id=2]
-[ext_resource path="res://fonts/lunchds.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/FalstinRegular-XOr2.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://sounds/Main Menu Click/rifle.wav" type="AudioStream" id=5]
 [ext_resource path="res://sounds/Main Menu Hover/hover.wav" type="AudioStream" id=6]
