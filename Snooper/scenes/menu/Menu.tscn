@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu/MenuCenterControl.gd" type="Script" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://scenes/menu/AnimatedSniperRifle.gd" type="Script" id=32]
 [ext_resource path="res://scenes/Village.tscn" type="PackedScene" id=33]
 [ext_resource path="res://images/backgrounds/shade.png" type="Texture" id=34]
+[ext_resource path="res://images/backgrounds/greeen.jpg" type="Texture" id=35]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -69,9 +70,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -250.0
+margin_left = -650.0
 margin_top = -200.0
-margin_right = 250.0
+margin_right = -150.0
 margin_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -83,9 +84,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
+margin_left = -600.0
 margin_top = -30.0
-margin_right = 200.0
+margin_right = -200.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -97,9 +98,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
+margin_left = -600.0
 margin_top = 380.0
-margin_right = 200.0
+margin_right = -200.0
 margin_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -116,7 +117,7 @@ stream = ExtResource( 5 )
 stream = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 963.308, 136.649 )
+position = Vector2( 563.423, 138.921 )
 frames = SubResource( 2 )
 animation = "idle"
 playing = true
@@ -133,6 +134,11 @@ scale = Vector2( 5.05584, 4.57405 )
 z_index = -1
 texture = ExtResource( 34 )
 offset = Vector2( -400, -400 )
+
+[node name="TutorialImage" type="Sprite" parent="."]
+position = Vector2( 1364.38, 680.485 )
+scale = Vector2( 1.86623, 1.7258 )
+texture = ExtResource( 35 )
 [connection signal="button_down" from="Control/StartButton" to="." method="_on_StartButton_button_down"]
 [connection signal="button_down" from="Control/CreaditsButton" to="." method="_on_CreaditsButton_button_down"]
 [connection signal="button_down" from="Control/ExitButton" to="." method="_on_ExitButton_button_down"]
