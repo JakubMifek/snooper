@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Game Start - Alexander Ehlers - Warped.ogg-7c1f4bce7334771795f398b40864c5d2.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Game Start - Alexander Ehlers - Warped.ogg"
+dest_files=[ "res://.import/Game Start - Alexander Ehlers - Warped.ogg-7c1f4bce7334771795f398b40864c5d2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

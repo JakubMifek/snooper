@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Situational - Alexander Ehlers - Twists.ogg-d6cf97b225066b1a3e5d3a084e765a1b.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Situational - Alexander Ehlers - Twists.ogg"
+dest_files=[ "res://.import/Situational - Alexander Ehlers - Twists.ogg-d6cf97b225066b1a3e5d3a084e765a1b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

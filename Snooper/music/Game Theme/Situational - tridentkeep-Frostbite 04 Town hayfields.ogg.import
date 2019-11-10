@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Situational - tridentkeep-Frostbite 04 Town hayfields.ogg-063adf752f4df3f504cc061f63a90225.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Situational - tridentkeep-Frostbite 04 Town hayfields.ogg"
+dest_files=[ "res://.import/Situational - tridentkeep-Frostbite 04 Town hayfields.ogg-063adf752f4df3f504cc061f63a90225.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

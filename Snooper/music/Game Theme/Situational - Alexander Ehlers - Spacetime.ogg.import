@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Situational - Alexander Ehlers - Spacetime.ogg-f44714ec8ae05f241e761dfd621d412c.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Situational - Alexander Ehlers - Spacetime.ogg"
+dest_files=[ "res://.import/Situational - Alexander Ehlers - Spacetime.ogg-f44714ec8ae05f241e761dfd621d412c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
