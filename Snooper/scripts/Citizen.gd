@@ -7,6 +7,7 @@ onready var animation = get_node("AnimationPlayer")
 const MAX_HUNGRY_RATIO = 0.50
 const MIN_HUNGRY_RATIO = 0.25
 const SPEED = 2.0
+var current_speed = SPEED
 
 var goal = Building.Goal.GIVE
 
@@ -35,6 +36,7 @@ func _process(delta):
 
 func _onBuildingReached():
 	self._currentTargetBuilding.interactWith(self, self.goal)
+	current_speed = SPEED + randf()*2 - 1
 	
 	var rnd = randf()
 	if self._currentTargetBuilding == occupationBuilding:
@@ -65,7 +67,7 @@ func _moveAccordingToDirection(delta):
 	
 func _moveToDirection(direction, delta, updateAnimation):
 	var normalizedDirection = direction.normalized()
-	var moveVector = normalizedDirection * SPEED
+	var moveVector = normalizedDirection * current_speed
 	if updateAnimation:
 		self._updateAnimation(normalizedDirection)
 	self.position += moveVector
