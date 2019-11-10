@@ -1,33 +1,27 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/Granary.gd" type="Script" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 54.1297, 36.4914 )
+[ext_resource path="res://images/tilemaps/Pipoya RPG Tileset 32x32/type_1_tileset.tres" type="TileSet" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Mock" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Mock"]
-margin_right = 112.0
-margin_bottom = 77.0
-
-[node name="TextEdit" type="TextEdit" parent="Mock"]
-margin_left = 11.5823
-margin_top = 6.48608
-margin_right = 101.582
-margin_bottom = 67.4861
-text = "Granary
-"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 56.2258, 38.1128 )
-shape = SubResource( 1 )
-
 [node name="Target" type="Node2D" parent="."]
+
+[node name="Base" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 262147, 13, 917505 )
+
+[node name="Higher" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65537, 13, 917508, 65538, 536870925, 917505, 65539, 536870925, 917505, 65540, 536870925, 917508, 131073, 13, 917508, 131074, 536870925, 917505, 131075, 536870925, 917505, 131076, 536870925, 917508, 196609, 13, 917508, 196610, 536870925, 917505, 196611, 536870925, 917505, 196612, 536870925, 917508, 262144, 38, 0, 262145, 13, 917508, 262146, 13, 917506, 262147, 13, 262151, 262148, 536870925, 917509, 327680, 33, 0, 327681, 13, 983044, 327682, 13, 983042, 327683, 13, 327687, 327684, 536870925, 983045 )
+
+[node name="Highest" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -131071, 26, 0, -131070, 26, 0, -131069, 26, 0, -131068, 26, 0, 262149, 31, 0, 327681, 35, 0, 327685, 31, 0 )

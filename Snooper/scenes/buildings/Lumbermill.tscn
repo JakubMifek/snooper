@@ -1,33 +1,28 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/GenericHouse.gd" type="Script" id=1]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 54.1297, 36.4914 )
+[ext_resource path="res://images/tilemaps/Pipoya RPG Tileset 32x32/type_1_tileset.tres" type="TileSet" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Mock" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Base" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -524285, 11, 2, -524284, 11, 3, -393220, 11, 2, -393219, 11, 3, -393218, 11, 2, -393217, 11, 3, -458751, 11, 2, -458750, 11, 3, -458749, 11, 131074, -458748, 11, 131075, -327684, 11, 65538, -327683, 11, 196610, -327682, 11, 196611, -327681, 11, 65539, -393216, 11, 2, -393215, 11, 196611, -393214, 11, 196610, -393213, 11, 196611, -393212, 11, 196610, -393211, 11, 3, -262148, 11, 2, -262147, 11, 196611, -262146, 11, 65539, -262145, 12, 196612, -327680, 11, 196611, -327679, 11, 65539, -327678, 11, 65538, -327677, 11, 65539, -327676, 11, 65538, -327675, 11, 65539, -196612, 11, 65538, -196611, 11, 196610, -196610, 11, 3, -196609, 11, 65538, -262144, 11, 65539, -262138, 12, 5, -131075, 11, 65538, -131074, 11, 196610, -131073, 11, 3, -196607, 11, 6, -196606, 11, 7, -196604, 12, 4, -196600, 12, 4, -65540, 12, 5, -65538, 11, 65538, -65537, 11, 65539, -131071, 11, 65542, -131070, 11, 65543, -131069, 12, 4, -131066, 12, 4, -65536, 12, 4, -65531, 15, 3, -65528, 12, 4, 65535, 15, 0, 0, 14, 0, 1, 14, 1, 2, 14, 1, 3, 14, 1, 5, 15, 0, 6, 12, 5, 7, 12, 4, 131071, 15, 0, 65536, 1610612750, 65538, 65537, 13, 720897, 65538, 10, 5, 65539, 10, 5, 65541, 15, 0, 196607, 15, 0, 131073, 30, 0, 131074, 29, 0, 131077, 15, 0, 131078, 12, 4, 262143, 15, 65538, 196608, 15, 65536, 196609, 15, 65536, 196610, 15, 4, 196612, 536870927, 4, 196613, 15, 65539 )
 
-[node name="ColorRect" type="ColorRect" parent="Mock"]
-margin_right = 112.0
-margin_bottom = 77.0
+[node name="Higher" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -262145, 11, 2, -1, 15, 2, -65532, 15, 65536, 0, 536870925, 655362, 1, 24, 0, 2, 13, 655361, 3, 13, 655362, 65536, 536870925, 720898, 65538, 13, 720897, 65539, 13, 720898 )
 
-[node name="TextEdit" type="TextEdit" parent="Mock"]
-margin_left = 11.5823
-margin_top = 6.48608
-margin_right = 101.582
-margin_bottom = 67.4861
-text = "Lumbermill"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 56.2258, 38.1128 )
-shape = SubResource( 1 )
+[node name="Highest" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -196608, 26, 0, -196607, 26, 0, -196606, 26, 0, -196605, 26, 0 )
 
 [node name="Target" type="Node2D" parent="."]
-position = Vector2( 3.16399, 0.790985 )
+position = Vector2( 144.724, 20.4381 )
