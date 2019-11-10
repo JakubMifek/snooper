@@ -5,11 +5,16 @@ var NavigationMap
 
 onready var death = preload('res://people/death.tscn')
 onready var animation = get_node("AnimationPlayer")
+var Population
 
 const MAX_HUNGRY_RATIO = 0.50
 const MIN_HUNGRY_RATIO = 0.25
 const SPEED = 64.0
 const ACCELERATION = 3.2
+const MAX_LIVES = 3
+
+signal death
+signal spawned
 
 var current_speed = SPEED
 var born_speed = SPEED
@@ -19,8 +24,11 @@ var fatness = 5 # 0-10
 
 var productivity = 1 # How much do i produce?
 var eatability = 1 # How much do i eat?
+var max_lives = int(rand_range(1, MAX_LIVES)) # How many lives can I have
+var lives = max_lives # How many lives do I have
 
-var goal = Building.Goal.GIVE
+var goal = Building.Goal.TAKE
+var dead
 var path = []
 
 # TODO: this can be private most probably
@@ -44,10 +52,14 @@ func initialize(houseBuilding, occupationBuilding, warehouseBuilding, foodBuildi
 	self.foodBuilding = foodBuilding
 	self._currentTargetBuilding = houseBuilding
 	self.position = houseBuilding.position + houseBuilding.get_node('Target').position
+	emit_signal('spawned')
+	Population.add_to_population(self)
 
 func _ready():
+	self.dead = false
 	NavigationMap = get_parent().get_parent().get_node('NavigationMap')
-
+	Population = get_node('/root/Root/Population')
+	
 func _process(delta):
 	_moveAccordingToDirection(delta)
 
@@ -62,8 +74,6 @@ func _choose_building(options, probabilities):
 	idx -= 1
 	
 	self._currentTargetBuilding = options[idx]
-	if self._currentTargetBuilding == foodBuilding:
-		self.goal = Building.Goal.TAKE
 	if self._currentTargetBuilding == occupationBuilding:
 		Stats.resources[resourceProduced].expectedAmount += productivity
 
@@ -83,11 +93,13 @@ func _onBuildingReached():
 				self._currentTargetBuilding = houseBuilding
 			else:
 				self._choose_building([occupationBuilding, houseBuilding], [0.5, 0.5])
+			self.goal = Building.Goal.TAKE
 		houseBuilding:
 			if res.expectedAmount >= res.capacity:
 				self._currentTargetBuilding = foodBuilding
 			else:
 				self._choose_building([foodBuilding, occupationBuilding], [self._hungryRatio, 1 - self._hungryRatio])
+			self.goal = Building.Goal.TAKE
 		warehouseBuilding:
 			var probs = [self._hungryRatio, ((1.0 - self._hungryRatio)*(1.0 - self._hungryRatio)) / 2 + self._hungryRatio, 1-((1.0 - self._hungryRatio)*(1.0 - self._hungryRatio)) / 2 + self._hungryRatio]
 			var S = 0
@@ -100,6 +112,7 @@ func _onBuildingReached():
 				for i in range(3):
 					S += probs[i]
 				self._choose_building([foodBuilding, houseBuilding, occupationBuilding], [probs[0]/S, probs[1]/S, probs[2]/S])
+			self.goal = Building.Goal.TAKE
 	
 func _moveAccordingToDirection(delta):
 	if self.path and len(self.path) > 0:
@@ -143,6 +156,8 @@ func _kill():
 		var d = death.instance()
 		d.init(self.position)
 		get_parent().add_child(d)
+		self.dead=true
 		d.play()
 		get_parent().remove_child(self)
 		sound.play()
+		emit_signal("death")

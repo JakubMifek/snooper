@@ -43,6 +43,6 @@ func _spawnStoneMiner():
 	
 func _spawnCitizen(citizen, occupation, storage):
 	var house = houses[randi() % houses.size()]
-	citizen.initialize(house, occupation, storage, $Granary)
 	get_node('Citizens').add_child(citizen)
+	citizen.initialize(house, occupation, storage, $Granary)
 	return citizen

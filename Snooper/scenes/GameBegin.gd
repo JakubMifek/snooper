@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	for i in range(10):
+	for i in range(30):
 		get_parent().get_node("Population")._spawnCitizen()
 		
-	Stats.resources[Stats.RESOURCES.wheat].amount = 10
+	Stats.resources[Stats.RESOURCES.wheat].amount = 0
