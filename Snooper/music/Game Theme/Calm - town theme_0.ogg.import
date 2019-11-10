@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Calm - town theme_0.ogg-b3142031a9f7b879086cb47b1a71a9b4.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Calm - town theme_0.ogg"
+dest_files=[ "res://.import/Calm - town theme_0.ogg-b3142031a9f7b879086cb47b1a71a9b4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

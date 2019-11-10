@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Game Start - Alexander Ehlers - Waking the devil.ogg-621775602dd1d4e16ad85cf71ac80945.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Game Start - Alexander Ehlers - Waking the devil.ogg"
+dest_files=[ "res://.import/Game Start - Alexander Ehlers - Waking the devil.ogg-621775602dd1d4e16ad85cf71ac80945.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

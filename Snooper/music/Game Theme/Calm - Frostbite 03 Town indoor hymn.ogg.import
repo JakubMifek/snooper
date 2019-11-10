@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Calm - Frostbite 03 Town indoor hymn.ogg-0a4afcc637fa3e832b91c8e15651a139.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Calm - Frostbite 03 Town indoor hymn.ogg"
+dest_files=[ "res://.import/Calm - Frostbite 03 Town indoor hymn.ogg-0a4afcc637fa3e832b91c8e15651a139.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

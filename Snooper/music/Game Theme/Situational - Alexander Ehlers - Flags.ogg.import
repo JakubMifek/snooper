@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Situational - Alexander Ehlers - Flags.ogg-2194912a3a32073bb9fdd10eb511b57c.oggstr"
+
+[deps]
+
+source_file="res://music/Game Theme/Situational - Alexander Ehlers - Flags.ogg"
+dest_files=[ "res://.import/Situational - Alexander Ehlers - Flags.ogg-2194912a3a32073bb9fdd10eb511b57c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

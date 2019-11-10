@@ -50,19 +50,26 @@
 	https://opengameart.org/content/book-flip-sounds
 	Voltiment555
 
-- village ambience sounds
-
 - gameplay music tracks (5+ for random options)
+	https://opengameart.org/content/free-music-pack
+	tricksntraps
+	https://opengameart.org/content/frostbite-medieval-soundtrack
+	tridentkeep
+	https://opengameart.org/content/town-theme
+	remaxim
+	https://opengameart.org/content/solemn-war-music
+	el-corleo
 
+Crow Caw
+	https://opengameart.org/content/crow-caw
+	zeroisnotnull
+	
 - font
 	http://www.zone38.net/
 	codeman38 | cody@zone38.net
 OPTIONAL:
 
 - Ambient Sounds
-	Crow Caw
-		https://opengameart.org/content/crow-caw
-		zeroisnotnull
 
 - Quarry monster
 	https://opengameart.org/content/horror-scream1
