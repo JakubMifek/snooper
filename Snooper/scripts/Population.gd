@@ -8,6 +8,12 @@ onready var label = get_node("Canvas/PopulationCounter")
 onready var village = get_node('../Village')
 onready var miss = preload('res://people/miss.tscn')
 
+var hungryness = 0
+var diligence = 0
+var productivity = 0
+var speed = 0
+var lives = 0
+
 func _ready():
 	_setText()
 
@@ -19,6 +25,14 @@ func _on_citizen_death():
 	
 	for i in range(len(population)-1, -1, -1):
 		if population[i] == null or population[i].dead:
+			if population[i]:
+				var N = len(self.population)
+				self.hungryness = ((self.hungryness * N) - population[i].hungryness)/(N-1)
+				self.diligence = ((self.diligence * N) - population[i].diligence)/(N-1)
+				self.productivity = ((self.productivity * N) - population[i].productivity)/(N-1)
+				self.speed = ((self.speed * N) - population[i].base_movement_speed)/(N-1)
+				self.lives = ((self.lives * N) - population[i].lives)/(N-1)
+				
 			population.remove(i)
 			i += 1
 			
@@ -58,6 +72,13 @@ func _killCitizens(position):
 		personToKill._kill()
 
 func add_to_population(citizen):
+	var N = len(self.population)
+	self.hungryness = ((self.hungryness * N) + citizen.hungryness)/(N+1)
+	self.diligence = ((self.diligence * N) + citizen.diligence)/(N+1)
+	self.productivity = ((self.productivity * N) + citizen.productivity)/(N+1)
+	self.speed = ((self.speed * N) + citizen.base_movement_speed)/(N+1)
+	self.lives = ((self.lives * N) + citizen.lives)/(N+1)
+	
 	citizen.connect('death', self, '_on_citizen_death')
 	population.append(citizen)
 	currentPopulation += 1

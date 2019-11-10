@@ -17,8 +17,10 @@ func _input(event):
 		var idx = found.pop_back()
 		var person = Population.population[idx]
 		
-		self.text =  'Occupation:\n%s\n\n' % ('Farmer' if person.occupation == 0 else 'Lumberjack' if person.occupation == 2 else 'Stone Miner')
-		self.text += 'Appetite:     %d\n' % person.hungryness
-		self.text += 'Diligence:    %d\n' % person.diligence
-		self.text += 'Productivity: %d\n' % person.productivity
-		self.text += 'Lives:        %d\n' % person.lives
+		self.text = 'Individual:\n'
+		self.text += '\tOccupation:\n\t%s\n\n' % ('Farmer' if person.occupation == 0 else 'Lumberjack' if person.occupation == 2 else 'Stone Miner')
+		self.text += '\tAppetite:\t  %3d\n' % person.hungryness
+		self.text += '\tDiligence:\t %3d\n' % person.diligence
+		self.text += '\tProductivity: %3d\n' % person.productivity
+		self.text += '\tSpeed:\t\t %3d\n' % person.base_movement_speed
+		self.text += '\tLives:\t\t %3d\n' % person.lives

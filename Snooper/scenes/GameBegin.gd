@@ -13,6 +13,8 @@ func _check_if_all_reached():
 		self._show_upgrade()
 
 func _ready():
+	randomize()
+	
 	for i in range(4):
 		get_parent().get_node("Population")._spawnCitizen(0)	 # farmer
 	for i in range(2):
@@ -33,7 +35,7 @@ func _ready():
 	stone.connect('target_reached', self, '_check_if_all_reached')
 	wood.connect('target_reached', self, '_check_if_all_reached')
 	
-	wheat.set_amount(24)
+	wheat.set_amount(0)
 	stone.set_amount(0)
 	wood.set_amount(0)
 	

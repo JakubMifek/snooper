@@ -9,18 +9,15 @@ func _ready():
 	pass 
 
 func _process(delta):
-	var resourcesText = ""
+	var resourcesText = "Current Goal:\n"
 	var wheatResource = Stats.resources[Stats.RESOURCES.wheat]
 	var woodResource = Stats.resources[Stats.RESOURCES.wood]
 	var stoneResource = Stats.resources[Stats.RESOURCES.stone]
 	
-	if wheatResource != null: 
-		resourcesText += "\tWheat:\t %3d (%3d)\n" % [wheatResource.amount, wheatResource.capacity]
-		
 	if woodResource != null:
-		resourcesText += "\tWood:\t %3d (%3d)\n" % [woodResource.amount, woodResource.capacity]
+		resourcesText += "\tWood: \t%3d\n" % [woodResource.target]
 		
 	if stoneResource != null:
-		resourcesText += "\tStone:\t%3d (%3d)" % [stoneResource.amount, stoneResource.capacity]
+		resourcesText += "\tStone:\t%3d" % [stoneResource.target]
 
 	self.text = resourcesText
