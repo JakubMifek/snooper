@@ -97,3 +97,7 @@ func _on_ExitButton_button_down():
 	ClickSound.play()
 	T_exit.start()
 	get_node("AnimatedSprite").animation = "default"
+
+
+func _on_HelpButton_pressed():
+	pass("GT HELP")
