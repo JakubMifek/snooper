@@ -17,6 +17,9 @@ var born_speed = SPEED
 var hungry = 0 # 0-10
 var fatness = 5 # 0-10
 
+var productivity = 1 # How much do i produce?
+var eatability = 1 # How much do i eat?
+
 var goal = Building.Goal.GIVE
 var path = []
 
@@ -27,6 +30,7 @@ var houseBuilding
 var occupationBuilding
 var warehouseBuilding
 var foodBuilding
+var resourceProduced
 
 var _hungryRatio = randf() * (MAX_HUNGRY_RATIO - MIN_HUNGRY_RATIO) + MIN_HUNGRY_RATIO
 var _currentTargetBuilding
@@ -47,25 +51,55 @@ func _ready():
 func _process(delta):
 	_moveAccordingToDirection(delta)
 
+func _choose_building(options, probabilities):
+	var val = randf()
+	var sum = 0
+	var idx = 0
+	while sum <= val and idx < len(probabilities):
+		sum += probabilities[idx]
+		idx += 1
+		
+	idx -= 1
+	
+	self._currentTargetBuilding = options[idx]
+	if self._currentTargetBuilding == foodBuilding:
+		self.goal = Building.Goal.TAKE
+	if self._currentTargetBuilding == occupationBuilding:
+		Stats.resources[resourceProduced].expectedAmount += productivity
+
 func _onBuildingReached():
 	self._currentTargetBuilding.interactWith(self, self.goal)
 	self.current_speed = min(born_speed, SPEED)
 	
 	var rnd = randf()
+	var res = Stats.resources[resourceProduced]
+	
 	match self._currentTargetBuilding: 
 		occupationBuilding:
 			self._currentTargetBuilding = warehouseBuilding
 			self.goal = Building.Goal.GIVE
 		foodBuilding:
-			self._currentTargetBuilding = occupationBuilding if rnd < 0.5 else houseBuilding
+			if res.expectedAmount >= res.capacity:
+				self._currentTargetBuilding = houseBuilding
+			else:
+				self._choose_building([occupationBuilding, houseBuilding], [0.5, 0.5])
 		houseBuilding:
-			self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else occupationBuilding
-			if self._currentTargetBuilding == foodBuilding:
-				self.goal = Building.Goal.TAKE
+			if res.expectedAmount >= res.capacity:
+				self._currentTargetBuilding = foodBuilding
+			else:
+				self._choose_building([foodBuilding, occupationBuilding], [self._hungryRatio, 1 - self._hungryRatio])
 		warehouseBuilding:
-			self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else houseBuilding if rnd < (1.0 - self._hungryRatio) / 2 + self._hungryRatio else occupationBuilding
-			if self._currentTargetBuilding == foodBuilding:
-				self.goal = Building.Goal.TAKE
+			var probs = [self._hungryRatio, ((1.0 - self._hungryRatio)*(1.0 - self._hungryRatio)) / 2 + self._hungryRatio, 1-((1.0 - self._hungryRatio)*(1.0 - self._hungryRatio)) / 2 + self._hungryRatio]
+			var S = 0
+			
+			if res.expectedAmount >= res.capacity:
+				for i in range(2):
+					S += probs[i]
+				self._choose_building([foodBuilding, houseBuilding, occupationBuilding], [probs[0]/S, probs[1]/S])
+			else:
+				for i in range(3):
+					S += probs[i]
+				self._choose_building([foodBuilding, houseBuilding, occupationBuilding], [probs[0]/S, probs[1]/S, probs[2]/S])
 	
 func _moveAccordingToDirection(delta):
 	if self.path and len(self.path) > 0:
@@ -104,6 +138,8 @@ func _kill():
 	if death_sounds != null and len(death_sounds):
 		var sound = death_sounds[int(rand_range(0, len(death_sounds)))]
 		sound.position = self.position
+		if self.goal == Building.Goal.GIVE:
+			Stats.resources[resourceProduced].expectedAmount -= self.productivity
 		var d = death.instance()
 		d.init(self.position)
 		get_parent().add_child(d)

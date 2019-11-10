@@ -7,6 +7,7 @@ var timeSinceLastSpawn = 4.5
 var increatePopulationEveryXSeconds = 5
 var currentPopulation = 0
 var population = []
+onready var label = get_node("Canvas/PopulationCounter")
 
 func _ready():
 	village = get_node("../Village")
@@ -49,7 +50,6 @@ func _spawnCitizen():
 	_setText()
 
 func _setText():
-	var label = get_node("Canvas/PopulationCounter")
 	label.text = ""
 	label.push_color(Color(1.0, 0.0, 0.0, 1.0))
 	label.add_text("Population: " + str(currentPopulation))

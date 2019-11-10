@@ -7,13 +7,8 @@ const FarmerClass = preload("res://scripts/people/Farmer.gd")
 func interactWith(citizen, goal):
 	var value = 0
 	if goal == Goal.GIVE:
-		value = +1
+		value = +citizen.productivity
 	elif goal == Goal.TAKE:
-		value = -1
-		
-	if citizen is StoneMinerClass:
-		Stats.add_resource(Stats.RESOURCES.stone, value)
-	elif citizen is LumberjackClass:
-		Stats.add_resource(Stats.RESOURCES.wood, value)
-	elif citizen is FarmerClass:
-		Stats.add_resource(Stats.RESOURCES.wheat, value)
+		value = -citizen.eatability # TODO: Different constant?
+	
+	Stats.add_resource(citizen.resourceProduced, value)

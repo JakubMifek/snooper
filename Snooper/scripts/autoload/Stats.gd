@@ -22,7 +22,7 @@ var _resources = {
 	RESOURCES.lumberjacks: resource.new("lumberjacks", 0, INF)
 }
 
-var resources = null
+var resources = []
 
 func _init():
 	self.resources = [
@@ -36,12 +36,13 @@ func _init():
 	]
 	
 func add_resource(resourceType, value):
-	var resource = self._resources[resourceType]
+	var resource = self.resources[resourceType]
 	resource.amount += value
 	if resource.amount > resource.capacity:
 		resource.amount = resource.capacity
 	elif resource.amount < 0:
+		# TODO: Go to menu! Game over!
 		resource.amount = 0
 		
 func get_resource(resourceType):
-	return self._resources[resourceType]
+	return self.resources[resourceType]

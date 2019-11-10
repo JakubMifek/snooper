@@ -10,17 +10,17 @@ func _ready():
 
 func _process(delta):
 	var resourcesText = ""
-	var wheatResource = Stats.get_resource(Stats.RESOURCES.wheat)
-	var woodResource = Stats.get_resource(Stats.RESOURCES.wood)
-	var stoneResource = Stats.get_resource(Stats.RESOURCES.stone)
+	var wheatResource = Stats.resources[Stats.RESOURCES.wheat]
+	var woodResource = Stats.resources[Stats.RESOURCES.wood]
+	var stoneResource = Stats.resources[Stats.RESOURCES.stone]
 	
 	if wheatResource != null: 
-		resourcesText += "Wheat: " + str(wheatResource.amount) + "\n"
+		resourcesText += "Wheat: %3d (%3d)\n" % [wheatResource.amount, wheatResource.capacity]
 		
 	if woodResource != null:
-		resourcesText += "Wood: " + str(woodResource.amount) + "\n"
+		resourcesText += "Wood:  %3d (%3d)\n" % [woodResource.amount, woodResource.capacity]
 		
 	if stoneResource != null:
-		resourcesText += "Stone: " + str(stoneResource.amount) + "\n"
+		resourcesText += "Stone: %3d (%3d)" % [stoneResource.amount, woodResource.capacity]
 
 	self.text = resourcesText
