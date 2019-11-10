@@ -7,7 +7,7 @@ onready var Population = get_node('/root/Root/Population')
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
-	self.text = 'Population:\n'
+	self.text = 'Population (Avg):\n'
 	self.text += '\tAppetite:\t %3d\n' % Population.hungryness
 	self.text += '\tDiligence:\t %3d\n' % Population.diligence
 	self.text += '\tProductivity: %3d\n' % Population.productivity
