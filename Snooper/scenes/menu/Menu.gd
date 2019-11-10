@@ -7,10 +7,12 @@ var ThemeSong
 var T_start
 var T_credits
 var T_exit
+var T_help
 
 var startBtn
 var exitBtn
 var creditsBtn
+var helpBtn
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -22,10 +24,12 @@ func _ready():
 	startBtn = parent.get_node('Control').get_node('Control/StartButton')
 	exitBtn = parent.get_node('Control').get_node('Control/ExitButton')
 	creditsBtn = parent.get_node('Control').get_node('Control/CreaditsButton')
-	
+	helpBtn = parent.get_node('Control').get_node('Control/HelpButton')
+		
 	startBtn.connect("mouse_entered", self, "_play_hover_sound");
 	exitBtn.connect("mouse_entered", self, "_play_hover_sound");
 	creditsBtn.connect("mouse_entered", self, "_play_hover_sound");
+	helpBtn.connect("mouse_entered", self, "_play_hover_sound");
 	
 	T_start = Timer.new()
 	add_child(T_start)
@@ -44,6 +48,12 @@ func _ready():
 	T_exit.wait_time = 1.5
 	T_exit.one_shot = true
 	T_exit.connect("timeout", self, "_exit_game");
+	
+	T_help = Timer.new()
+	add_child(T_help)
+	T_help.wait_time = 1.5
+	T_help.one_shot = true
+	T_help.connect("timeout", self, "_open_help");
 	
 	var T = Timer.new()
 	add_child(T)
@@ -65,6 +75,9 @@ func _start_game():
 	
 func _open_credits():
 	get_tree().change_scene("res://scenes/menu/Credits.tscn")
+	
+func _open_help():
+	get_tree().change_scene("res://scenes/menu/Help.tscn")
 	
 func _exit_game():
 	get_tree().quit()
@@ -100,4 +113,7 @@ func _on_ExitButton_button_down():
 
 
 func _on_HelpButton_pressed():
-	pass("GT HELP")
+	_on_any_btn_click()
+	ClickSound.play()
+	T_help.start()
+	get_node("AnimatedSprite").animation = "default"
