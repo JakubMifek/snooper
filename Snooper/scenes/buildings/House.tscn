@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/GenericHouse.gd" type="Script" id=1]
 [ext_resource path="res://images/tilemaps/Pipoya RPG Tileset 32x32/type_1_tileset.tres" type="TileSet" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 54.1297, 36.4914 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,13 +18,5 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -196607, 25, 0, 65535, 16, 2, 5, 16, 3, 131071, 16, 0, 65536, 24, 0, 65537, 24, 0, 65538, 24, 0, 65539, 22, 0, 65541, 16, 0, 196607, 16, 0, 131077, 16, 0, 262143, 16, 65538, 196608, 16, 65536, 196609, 16, 65536, 196610, 16, 65539, 196612, 16, 65540, 196613, 16, 65539 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
-position = Vector2( 82.7627, 64.6497 )
-shape = SubResource( 1 )
-
 [node name="Target" type="Node2D" parent="."]
-position = Vector2( 112.58, 102.156 )
+position = Vector2( 113.622, 76.0958 )

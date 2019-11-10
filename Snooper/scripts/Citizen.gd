@@ -1,13 +1,14 @@
 extends Node2D
 
 var Building = preload('Building.gd')
+var NavigationMap
 
 onready var animation = get_node("AnimationPlayer")
 
 const MAX_HUNGRY_RATIO = 0.50
 const MIN_HUNGRY_RATIO = 0.25
-const SPEED = 2.0
-const ACCELERATION = 0.1
+const SPEED = 64.0
+const ACCELERATION = 3.2
 
 var current_speed = SPEED
 var born_speed = SPEED
@@ -16,6 +17,7 @@ var hungry = 0 # 0-10
 var fatness = 5 # 0-10
 
 var goal = Building.Goal.GIVE
+var path = []
 
 # TODO: this can be private most probably
 var death_sounds
@@ -27,16 +29,19 @@ var foodBuilding
 
 var _hungryRatio = randf() * (MAX_HUNGRY_RATIO - MIN_HUNGRY_RATIO) + MIN_HUNGRY_RATIO
 var _currentTargetBuilding
-var _previousTargetLocation
+var _prevDirection
 
 func initialize(houseBuilding, occupationBuilding, warehouseBuilding, foodBuilding):
-	self.born_speed = SPEED + randf()*2.5 - 1
+	self.born_speed = SPEED + randf()*SPEED - SPEED/2.0
 	self.houseBuilding = houseBuilding
 	self.occupationBuilding = occupationBuilding
 	self.warehouseBuilding = warehouseBuilding
 	self.foodBuilding = foodBuilding
 	self._currentTargetBuilding = houseBuilding
-	self.position = houseBuilding.position
+	self.position = houseBuilding.position + houseBuilding.get_node('Target').position
+
+func _ready():
+	NavigationMap = get_parent().get_parent().get_node('NavigationMap')
 
 func _process(delta):
 	_moveAccordingToDirection(delta)
@@ -62,29 +67,21 @@ func _onBuildingReached():
 				self.goal = Building.Goal.TAKE
 	
 func _moveAccordingToDirection(delta):
-	var goingToLocation = self._currentTargetBuilding.position + self._currentTargetBuilding.get_node('Target').position
-	
-	if self.current_speed < self.born_speed:
-		self.current_speed += ACCELERATION * delta * born_speed
+	if self.path and len(self.path) > 0:
+		var target = path[0]
+		var direction = (target-position).normalized()
+		self._updateAnimation(direction)
+		self._prevDirection = direction
+		position += direction * self.current_speed * delta
+		
+		if position.distance_to(target) < 3.0:
+			path.remove(0)
+			if len(path) == 0:
+				path = null
+				self._onBuildingReached()
 	else:
-		self.current_speed = born_speed
-	
-	var updateAnimation = self._previousTargetLocation != goingToLocation
-	self._previousTargetLocation = goingToLocation
-	
-	var direction = goingToLocation - self.position
-	if (direction.length() < 3.0):
-		self._onBuildingReached()
-	else:
-		self._moveToDirection(direction, delta, updateAnimation)
-	
-func _moveToDirection(direction, delta, updateAnimation):
-	var normalizedDirection = direction.normalized()
-	var moveVector = normalizedDirection * self.current_speed
-	if updateAnimation:
-		self._updateAnimation(normalizedDirection)
-	self.position += moveVector
-	
+		self.path = NavigationMap.get_path(self.position, self._currentTargetBuilding.position + self._currentTargetBuilding.get_node('Target').position)
+		
 func _updateAnimation(normalizedDirection):
 	var animationToPlay = self._getAnimationToPlay(normalizedDirection)
 	if (animation.assigned_animation != animationToPlay):
