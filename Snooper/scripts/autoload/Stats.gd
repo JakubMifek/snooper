@@ -36,9 +36,6 @@ func _init():
 	]
 	
 func add_resource(resourceType, value):
-	var un = get_node("/root/Root/UI")
-	un.showDeath()
-		
 	var resource = self.resources[resourceType]
 	resource.amount += value
 	if resource.amount > resource.capacity:
