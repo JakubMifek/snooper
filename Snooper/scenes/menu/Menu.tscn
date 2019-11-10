@@ -103,11 +103,12 @@ playing = true
 script = ExtResource( 32 )
 
 [node name="Node2D" parent="." instance=ExtResource( 33 )]
-position = Vector2( 0, 0 )
+position = Vector2( 397.609, 265.474 )
+scale = Vector2( 1.2, 1.2 )
 z_index = -2
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2595.74, 2072.95 )
+position = Vector2( 2949.71, 2469.97 )
 scale = Vector2( 5.05584, 4.57405 )
 z_index = -1
 texture = ExtResource( 34 )
