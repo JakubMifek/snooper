@@ -34,7 +34,7 @@ func _ready():
 	wood = Stats.resources[Stats.RESOURCES.wood]
 	
 	wheat.capacity = 32
-	stone.capacity = 16
+	stone.capacity = 1
 	wood.capacity = 16
 	
 	stone.target = 12

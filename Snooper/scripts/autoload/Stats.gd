@@ -38,8 +38,12 @@ func _init():
 func add_resource(resourceType, value):
 	var resource = self.resources[resourceType]
 	resource.amount += value
-	if resource.amount > resource.capacity:
+	if resource.amount >= resource.capacity:
 		resource.set_amount(resource.capacity)
+		var popup = get_node('/root/Root/UI/CanvasLayer2/PopupDialog/PopupDialog')
+		var text = popup.get_node('RichTextLabel')
+		text.bbcode_text = 'Your %s capacity was reached.' % resource.type
+		popup.visible=true
 	elif resource.amount < 0:
 		resource.set_amount(0)
 		

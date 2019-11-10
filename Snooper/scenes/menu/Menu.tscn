@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu/MenuCenterControl.gd" type="Script" id=2]
@@ -131,7 +131,7 @@ stream = ExtResource( 6 )
 stream = ExtResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 563.423, 138.921 )
+position = Vector2( 963.308, 136.649 )
 frames = SubResource( 2 )
 animation = "idle"
 playing = true
