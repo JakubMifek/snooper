@@ -42,7 +42,7 @@ func add_resource(resourceType, value):
 		resource.set_amount(resource.capacity)
 		var popup = get_node('/root/Root/UI/CanvasLayer2/PopupDialog/PopupDialog')
 		var text = popup.get_node('RichTextLabel')
-		text.bbcode_text = 'Your %s capacity was reached.' % resource.type
+		text.bbcode_text = 'Your %s capacity has been reached.\n\nReferred workers can no longer collect any new resources. Therefore, they will spend their free time eating.' % resource.type
 		popup.visible=true
 	elif resource.amount < 0:
 		resource.set_amount(0)
