@@ -39,10 +39,19 @@ func add_resource(resourceType, value):
 	var resource = self.resources[resourceType]
 	resource.amount += value
 	if resource.amount > resource.capacity:
-		resource.amount = resource.capacity
+		resource.set_amount(resource.capacity)
 	elif resource.amount < 0:
 		# TODO: Go to menu! Game over!
-		resource.amount = 0
+		resource.set_amount(0)
 		
 func get_resource(resourceType):
 	return self.resources[resourceType]
+
+func can_upgrade():
+	return \
+		self.resources[RESOURCES.wood].amount >= self.resources[RESOURCES.wood].target and \
+		self.resources[RESOURCES.stone].amount >= self.resources[RESOURCES.stone].target
+
+func upgrade():
+	for resource in self.resources:
+		resource.upgrade()

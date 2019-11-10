@@ -8,6 +8,7 @@ var Cam
 var Shots = []
 var EmptyClip
 var Reload
+onready var UpgradeButton = get_node('/root/Root/UI/CanvasLayer2/UpgradeButton')
 
 # Variables
 var T
@@ -47,6 +48,9 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ESCAPE:
 			get_tree().change_scene("res://scenes/menu/Menu.tscn")
+		if event.pressed and event.scancode == KEY_F1 and Stats.can_upgrade():
+			Stats.upgrade()
+			UpgradeButton.visible = false
 	if event is InputEventMouseButton and event.pressed:
 		match (event.button_index):
 			BUTTON_LEFT:

@@ -6,7 +6,7 @@ extends RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+    pass
 
 func _process(delta):
 	var resourcesText = ""
@@ -21,6 +21,6 @@ func _process(delta):
 		resourcesText += "Wood:  %3d (%3d)\n" % [woodResource.amount, woodResource.capacity]
 		
 	if stoneResource != null:
-		resourcesText += "Stone: %3d (%3d)" % [stoneResource.amount, woodResource.capacity]
+		resourcesText += "Stone: %3d (%3d)" % [stoneResource.amount, stoneResource.capacity]
 
 	self.text = resourcesText
