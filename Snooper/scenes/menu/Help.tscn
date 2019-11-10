@@ -14,10 +14,10 @@ scale = Vector2( 1.53991, 1.53639 )
 texture = ExtResource( 1 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 745.363
-margin_top = 611.727
-margin_right = 1201.36
-margin_bottom = 712.727
+margin_left = 756.413
+margin_top = 978.693
+margin_right = 1172.41
+margin_bottom = 1050.69
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
 script = ExtResource( 3 )
