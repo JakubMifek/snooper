@@ -26,6 +26,10 @@ Dalibor Zeman
 
 [center]Resources:[/center]
 
+Low Poly Animated Guns
+Autor: quaternius
+link: https://opengameart.org/content/low-poly-animated-guns
+
 [center]Game Engine:[/center]
 This game uses Godot Engine, available under the following license:
 
@@ -47,6 +51,10 @@ Dalibor Zeman
 
 Resources:
 
+Low Poly Animated Guns
+Autor: quaternius
+link: https://opengameart.org/content/low-poly-animated-guns
+
 Game Engine:
 This game uses Godot Engine, available under the following license:
 
@@ -63,9 +71,9 @@ script = ExtResource( 3 )
 
 [node name="CancelButton" type="Button" parent="."]
 margin_left = 56.4656
-margin_top = 533.026
+margin_top = 636.271
 margin_right = 110.466
-margin_bottom = 553.026
+margin_bottom = 656.271
 text = "Cancel"
 script = ExtResource( 4 )
 [connection signal="button_down" from="CancelButton" to="." method="_on_CancelButton_button_down"]
