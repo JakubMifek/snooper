@@ -90,6 +90,7 @@ func _on_any_btn_click():
 	startBtn.disabled = true
 	creditsBtn.disabled = true
 	exitBtn.disabled = true
+	helpBtn.disabled = true
 
 func _on_StartButton_button_down():
 	ThemeSong.stop()
