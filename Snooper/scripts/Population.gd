@@ -21,17 +21,15 @@ func _ready():
 #	pass
 		
 func _on_citizen_death():
-	currentPopulation -= 1
-	
 	for i in range(len(population)-1, -1, -1):
 		if population[i] == null or population[i].dead:
 			if population[i]:
 				var N = len(self.population)
-				self.hungryness = ((self.hungryness * N) - population[i].hungryness)/(N-1)
-				self.diligence = ((self.diligence * N) - population[i].diligence)/(N-1)
-				self.productivity = ((self.productivity * N) - population[i].productivity)/(N-1)
-				self.speed = ((self.speed * N) - population[i].base_movement_speed)/(N-1)
-				self.lives = ((self.lives * N) - population[i].lives)/(N-1)
+				self.hungryness = ((self.hungryness * N) - population[i].hungryness)/max(1, N-1)
+				self.diligence = ((self.diligence * N) - population[i].diligence)/max(1, N-1)
+				self.productivity = ((self.productivity * N) - population[i].productivity)/max(1, N-1)
+				self.speed = ((self.speed * N) - population[i].base_movement_speed)/max(1, N-1)
+				self.lives = ((self.lives * N) - population[i].lives)/max(1, N-1)
 				
 			population.remove(i)
 			i += 1
@@ -73,15 +71,15 @@ func _killCitizens(position):
 
 func add_to_population(citizen):
 	var N = len(self.population)
-	self.hungryness = ((self.hungryness * N) + citizen.hungryness)/(N+1)
-	self.diligence = ((self.diligence * N) + citizen.diligence)/(N+1)
-	self.productivity = ((self.productivity * N) + citizen.productivity)/(N+1)
-	self.speed = ((self.speed * N) + citizen.base_movement_speed)/(N+1)
-	self.lives = ((self.lives * N) + citizen.lives)/(N+1)
+	self.hungryness = ((self.hungryness * N) + citizen.hungryness)/max(1, N+1)
+	self.diligence = ((self.diligence * N) + citizen.diligence)/max(1, N+1)
+	self.productivity = ((self.productivity * N) + citizen.productivity)/max(1, N+1)
+	self.speed = ((self.speed * N) + citizen.base_movement_speed)/max(1, N+1)
+	self.lives = ((self.lives * N) + citizen.lives)/max(1, N+1)
 	
+	currentPopulation += 1
 	citizen.connect('death', self, '_on_citizen_death')
 	population.append(citizen)
-	currentPopulation += 1
 	_setText()
 
 func spawn_citizen(occupation, movement, hungryness, diligence, productivity):
