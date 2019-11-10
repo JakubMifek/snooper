@@ -7,8 +7,6 @@ export var sound_length = 1.0
 
 func _ready():
 	value = 100
-	rect_position.x = OS.window_size.x - rect_size.x - 20
-	rect_position.y = OS.window_size.y - rect_size.y - 20
 
 func reset_cooldown(time_ms):
 	cooldown_total = (time_ms + sound_length)
