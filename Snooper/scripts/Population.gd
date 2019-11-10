@@ -89,7 +89,7 @@ func _spawnCitizen(occupation=null):
 	var citizen = village.spawnCitizen(occupation)
 
 func _setText():
-	var currentPopulation = Stats.get_resource(Stats.RESOURCES.population)
+	var currentPopulation = Stats.get_resource(Stats.RESOURCES.population).amount
 	label.text = ""
 	label.push_color(Color(1.0, 0.0, 0.0, 1.0))
 	label.add_text("Population: " + str(currentPopulation))
