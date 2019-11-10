@@ -13,11 +13,13 @@ func _check_if_all_reached():
 		self._show_upgrade()
 
 func _ready():
+	randomize()
+	
 	for i in range(4):
-		get_parent().get_node("Population")._spawnCitizen(0)	 # farmer
+		get_parent().get_node("Population").spawn_citizen(0, 64, 1, 1, 1)	 # farmer
 	for i in range(2):
-		get_parent().get_node("Population")._spawnCitizen(1)	 # lumberjack
-		get_parent().get_node("Population")._spawnCitizen(2)	 # stone-miner
+		get_parent().get_node("Population").spawn_citizen(1, 64, 1, 1, 1)	 # lumberjack
+		get_parent().get_node("Population").spawn_citizen(2, 64, 1, 1, 1)	 # stone-miner
 		
 	wheat = Stats.resources[Stats.RESOURCES.wheat]
 	stone = Stats.resources[Stats.RESOURCES.stone]
@@ -33,7 +35,7 @@ func _ready():
 	stone.connect('target_reached', self, '_check_if_all_reached')
 	wood.connect('target_reached', self, '_check_if_all_reached')
 	
-	wheat.set_amount(24)
+	wheat.set_amount(0)
 	stone.set_amount(0)
 	wood.set_amount(0)
 	
