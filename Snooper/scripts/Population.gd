@@ -20,6 +20,7 @@ func _ready():
 #	pass
 		
 func _on_citizen_death():
+	Stats.add_resource(Stats.RESOURCES.population, -1)
 	for i in range(len(population)-1, -1, -1):
 		if population[i] == null or population[i].dead:
 			if population[i]:
@@ -63,7 +64,6 @@ func _killCitizens(position):
 		d.play()
 		return
 	
-	Stats.add_resource(Stats.RESOURCES.population, -len(peopleToKill))
 	while len(peopleToKill):
 		var idx = peopleToKill.pop_back()
 		var personToKill = population[idx]
