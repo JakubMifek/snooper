@@ -29,12 +29,12 @@ bbcode_text = "“It is not the strongest of the species that survives, nor the 
 
 You are the sniper, you choose, you decide!
 
-Villagers live their own lives but may run into troubles with survival. Nurture them into prosperity.                                [ press ENTER to continue ]"
+Villagers live their own lives but may run into troubles with survival. Nurture them into prosperity.                                [ press ANY key to continue ]"
 text = "“It is not the strongest of the species that survives, nor the most intelligent that survives. It is the one that is the most adaptable to change.”
  – Charles Darwin
 
 You are the sniper, you choose, you decide!
 
-Villagers live their own lives but may run into troubles with survival. Nurture them into prosperity.                                [ press ENTER to continue ]"
+Villagers live their own lives but may run into troubles with survival. Nurture them into prosperity.                                [ press ANY key to continue ]"
 scroll_active = false
 script = ExtResource( 4 )
