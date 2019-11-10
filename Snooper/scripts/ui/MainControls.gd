@@ -40,7 +40,7 @@ func _input(event):
 		
 		T = Timer.new()
 		add_child(T)
-		T.wait_time = COOLDOWN_IN_MS/1000
+		T.wait_time = COOLDOWN_IN_MS/1000.0
 		T.one_shot = true
 		T.connect("timeout", self, "_on_timeout")
 	

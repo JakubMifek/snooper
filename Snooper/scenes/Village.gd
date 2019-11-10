@@ -1,6 +1,5 @@
 extends Node2D
 
-
 onready var farmer = preload("res://people/farmer.tscn")
 onready var lumberjack = preload("res://people/lumberjack.tscn")
 onready var stoneMiner = preload("res://people/stone_miner.tscn")

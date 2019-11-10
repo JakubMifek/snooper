@@ -37,7 +37,6 @@ func _killCitizens(position):
 	while len(peopleToKill):
 		idx = peopleToKill.pop_back()
 		var personToKill = population[idx]
-		get_node('/root/Root/Village/Citizens').remove_child(personToKill)
 		personToKill._kill()
 		population.remove(idx)
 		currentPopulation -= 1

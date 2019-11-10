@@ -3,6 +3,7 @@ extends Node2D
 var Building = preload('Building.gd')
 var NavigationMap
 
+onready var death = preload('res://people/death.tscn')
 onready var animation = get_node("AnimationPlayer")
 
 const MAX_HUNGRY_RATIO = 0.50
@@ -103,4 +104,9 @@ func _kill():
 	if death_sounds != null and len(death_sounds):
 		var sound = death_sounds[int(rand_range(0, len(death_sounds)))]
 		sound.position = self.position
+		var d = death.instance()
+		d.init(self.position)
+		get_parent().add_child(d)
+		d.play()
+		get_parent().remove_child(self)
 		sound.play()

@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/people/Farmer.gd" type="Script" id=1]
 [ext_resource path="res://people/sprites/Patreon sprites 1/15.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "move_down"
+[sub_resource type="Animation" id=6]
+resource_name = "die"
+length = 0.6
+
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -20,8 +23,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "move_left"
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -37,8 +39,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "move_right"
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -54,8 +55,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "move_up"
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -78,9 +78,11 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/move_down = SubResource( 1 )
-anims/move_left = SubResource( 2 )
-anims/move_right = SubResource( 3 )
-anims/move_up = SubResource( 4 )
+anims/die = SubResource( 6 )
+anims/move_down = SubResource( 7 )
+anims/move_left = SubResource( 8 )
+anims/move_right = SubResource( 9 )
+anims/move_up = SubResource( 5 )
