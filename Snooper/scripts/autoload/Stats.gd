@@ -36,13 +36,19 @@ func _init():
 	]
 	
 func add_resource(resourceType, value):
+	var un = get_node("/root/Root/UI")
+	un.showDeath()
+		
 	var resource = self.resources[resourceType]
 	resource.amount += value
 	if resource.amount > resource.capacity:
 		resource.set_amount(resource.capacity)
 	elif resource.amount < 0:
-		# TODO: Go to menu! Game over!
 		resource.set_amount(0)
+		
+	if resourceType == RESOURCES.population and resource.amount <= 1:
+		var uiNode = get_node("/root/Root/UI")
+		uiNode.showDeath()
 		
 func get_resource(resourceType):
 	return self.resources[resourceType]
