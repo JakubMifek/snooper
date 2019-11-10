@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu/MenuCenterControl.gd" type="Script" id=2]
@@ -32,6 +32,8 @@
 [ext_resource path="res://images/menu/sniper/0001.png" type="Texture" id=30]
 [ext_resource path="res://images/menu/0001.png" type="Texture" id=31]
 [ext_resource path="res://scenes/menu/AnimatedSniperRifle.gd" type="Script" id=32]
+[ext_resource path="res://scenes/Village.tscn" type="PackedScene" id=33]
+[ext_resource path="res://images/backgrounds/shade.png" type="Texture" id=34]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -99,6 +101,17 @@ frames = SubResource( 2 )
 animation = "idle"
 playing = true
 script = ExtResource( 32 )
+
+[node name="Node2D" parent="." instance=ExtResource( 33 )]
+position = Vector2( 0, 0 )
+z_index = -2
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2595.74, 2072.95 )
+scale = Vector2( 5.05584, 4.57405 )
+z_index = -1
+texture = ExtResource( 34 )
+offset = Vector2( -400, -400 )
 [connection signal="button_down" from="Control/StartButton" to="." method="_on_StartButton_button_down"]
 [connection signal="button_down" from="Control/CreaditsButton" to="." method="_on_CreaditsButton_button_down"]
 [connection signal="button_down" from="Control/ExitButton" to="." method="_on_ExitButton_button_down"]

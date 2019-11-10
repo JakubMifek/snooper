@@ -8,14 +8,6 @@ var houses
 
 func _ready():
 	houses = get_tree().get_nodes_in_group("houses")
-	
-	var wheat = Stats.resources[Stats.RESOURCES.wheat]
-	var stone = Stats.resources[Stats.RESOURCES.stone]
-	var wood = Stats.resources[Stats.RESOURCES.wood]
-	
-	wheat.capacity = 30
-	stone.capacity = 50
-	wood.capacity = 50
 
 func spawnCitizen():
 	var rnd = randf()

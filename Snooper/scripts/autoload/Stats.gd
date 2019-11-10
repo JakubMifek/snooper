@@ -13,13 +13,13 @@ enum RESOURCES {
 }
 
 var _resources = {
-	RESOURCES.population: resource.new("population", 0, INF),
-	RESOURCES.wheat: resource.new("wheat", 20, INF),
-	RESOURCES.stone: resource.new("stone", 0, INF),
-	RESOURCES.wood: resource.new("wood", 0, INF),
-	RESOURCES.farmers: resource.new("farmers", 0, INF),
-	RESOURCES.stone_miners: resource.new("stone_miners", 0, INF),
-	RESOURCES.lumberjacks: resource.new("lumberjacks", 0, INF)
+	RESOURCES.population: resource.new("population", 0, INF, INF),
+	RESOURCES.wheat: resource.new("wheat", 0, INF, INF),
+	RESOURCES.stone: resource.new("stone", 0, INF, INF),
+	RESOURCES.wood: resource.new("wood", 0, INF, INF),
+	RESOURCES.farmers: resource.new("farmers", 0, INF, INF),
+	RESOURCES.stone_miners: resource.new("stone_miners", 0, INF, INF),
+	RESOURCES.lumberjacks: resource.new("lumberjacks", 0, INF, INF)
 }
 
 var resources = []
