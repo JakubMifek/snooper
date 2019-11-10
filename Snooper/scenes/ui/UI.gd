@@ -14,7 +14,8 @@ func showDeath():
 		isInit = true
 		return
 		
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	var endNode = $CanvasLayer2/EndGame
-	endNode.visible=true
-	endNode.modulate.a = 1.0
+	get_tree().change_scene("res://scenes/menu/Menu.tscn")
+	#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#var endNode = $CanvasLayer2/EndGame
+	#endNode.visible=true
+	#endNode.modulate.a = 1.0
