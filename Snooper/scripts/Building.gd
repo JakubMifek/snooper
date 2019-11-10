@@ -14,4 +14,5 @@ func _ready():
 	pass # Replace with function body.
 
 func interactWith(citizen, goal):
-	pass
+	citizen.speed = 0
+	citizen.delay = 0.5

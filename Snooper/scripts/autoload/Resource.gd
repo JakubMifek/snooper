@@ -23,7 +23,6 @@ func _init(type, amount, capacity, target):
 func set_amount(value):
 	self.amount = value
 	if self.amount >= self.target:
-		 print('Emitting')
 		 emit_signal("target_reached")
 		
 func upgrade():

@@ -13,27 +13,31 @@ func _check_if_all_reached():
 		self._show_upgrade()
 
 func _ready():
-	for i in range(40):
-		get_parent().get_node("Population")._spawnCitizen()
+	for i in range(4):
+		get_parent().get_node("Population")._spawnCitizen(0)	 # farmer
+	for i in range(2):
+		get_parent().get_node("Population")._spawnCitizen(1)	 # lumberjack
+		get_parent().get_node("Population")._spawnCitizen(2)	 # stone-miner
 		
 	wheat = Stats.resources[Stats.RESOURCES.wheat]
 	stone = Stats.resources[Stats.RESOURCES.stone]
 	wood = Stats.resources[Stats.RESOURCES.wood]
 	
-	wheat.capacity = 10
-	stone.capacity = 5
-	wood.capacity = 5
+	wheat.capacity = 32
+	stone.capacity = 16
+	wood.capacity = 16
 	
-	stone.target = 0
-	wood.target = 0
+	stone.target = 12
+	wood.target = 12
 	
 	stone.connect('target_reached', self, '_check_if_all_reached')
 	wood.connect('target_reached', self, '_check_if_all_reached')
 	
-	wheat.set_amount(10)
+	wheat.set_amount(24)
 	stone.set_amount(0)
 	wood.set_amount(0)
 	
-	stone._upgrades = [{'target': 16, 'capacity': 20}, {'target': 64, 'capacity': 70}]
-	wood._upgrades = [{'target': 12, 'capacity': 15}, {'target': 72, 'capacity': 80}]
+	wheat._upgrades = [{'target': INF, 'capacity': 64}, {'target': INF, 'capacity': 128}]
+	stone._upgrades = [{'target': 60, 'capacity': 72}, {'target': 240, 'capacity': 300}]
+	wood._upgrades = [{'target': 96, 'capacity': 120}, {'target': 180, 'capacity': 216}]
 	

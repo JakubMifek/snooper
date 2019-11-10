@@ -11,4 +11,8 @@ func _ready():
 #	pass
 
 func interactWith(citizen, goal):
-	pass
+	.interactWith(citizen, goal)
+	if not self.name.begins_with('House'):
+		return
+		
+	citizen.mate()

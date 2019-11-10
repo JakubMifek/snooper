@@ -2,8 +2,6 @@ extends Node2D
 
 export var spawnLocation = Vector2()
 
-var timeSinceLastSpawn = 4.5
-var increatePopulationEveryXSeconds = 5
 var currentPopulation = 0
 var population = []
 onready var label = get_node("Canvas/PopulationCounter")
@@ -12,10 +10,7 @@ func _ready():
 	_setText()
 
 func _process(delta):
-	timeSinceLastSpawn += delta
-	if timeSinceLastSpawn >= increatePopulationEveryXSeconds:
-		_spawnCitizen()
-		timeSinceLastSpawn = timeSinceLastSpawn - increatePopulationEveryXSeconds
+	pass
 		
 func _on_citizen_death():
 	currentPopulation -= 1
@@ -49,13 +44,16 @@ func _killCitizens(position):
 		personToKill._kill()
 
 func add_to_population(citizen):
+	citizen.connect('death', self, '_on_citizen_death')
 	population.append(citizen)
 	currentPopulation += 1
 	_setText()
 
-func _spawnCitizen():
-	var citizen = village.spawnCitizen()
-	citizen.connect('death', self, '_on_citizen_death')
+func spawn_citizen(occupation, movement, hungryness, diligence, productivity):
+	village.spawnCitizen(occupation, movement, hungryness, diligence, productivity)
+
+func _spawnCitizen(occupation=null):
+	var citizen = village.spawnCitizen(occupation)
 
 func _setText():
 	label.text = ""

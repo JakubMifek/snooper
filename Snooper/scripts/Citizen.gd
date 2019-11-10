@@ -1,38 +1,60 @@
 extends Node2D
 
-var Building = preload('Building.gd')
-var NavigationMap
+enum Occupation {
+	FARMER = 0,
+	STONE_MINER = 1,
+	LUMBERJACK = 2
+}
 
-onready var death = preload('res://people/death.tscn')
-onready var animation = get_node("AnimationPlayer")
-var Population
-
-const MAX_HUNGRY_RATIO = 0.50
-const MIN_HUNGRY_RATIO = 0.25
-const SPEED = 64.0
-const ACCELERATION = 3.2
-const MAX_LIVES = 3
-
+# Signals 
 signal death
 signal spawned
 
-var current_speed = SPEED
-var born_speed = SPEED
+# Hyperparameters
+const MUTATION_PROBABILITY = 0.2
+const MATING_PROBABILITY = 0.2
 
-var hungry = 0 # 0-10
-var fatness = 5 # 0-10
+const MIN_OCCUPATION = 0
+const MAX_OCCUPATION = 2
+const OCCUPATION_DELTA = null
 
-var productivity = 1 # How much do i produce?
-var eatability = 1 # How much do i eat?
-var max_lives = int(rand_range(1, MAX_LIVES)) # How many lives can I have
-var lives = max_lives # How many lives do I have
+const MIN_BASE_MOVEMENT = 32
+const MAX_BASE_MOVEMENT = 128
+const MOVEMENT_DELTA = 12
 
-var goal = Building.Goal.TAKE
-var dead
-var path = []
+const MIN_PRODUCTIVITY = 1
+const MAX_PRODUCTIVITY = 10
+const PRODUCTIVITY_DELTA = 1
 
-# TODO: this can be private most probably
+const MIN_HUNGRYNESS = 1
+const MAX_HUNGRYNESS = 10
+const HUNGRYNESS_DELTA = 1
+
+const MIN_DILIGENCE = 1
+const MAX_DILIGENCE = 10
+const DILIGENCE_DELTA = 1
+
+var occupation # Type of my work (1-3)
+var base_movement_speed # Speed of movement (32-128 with step of 12)
+var productivity # Scale from 1 to 10 (how many items do i harvest?)
+var hungryness # Probability of going for food (1-9 ... translates to probs 0.1-0.45 ... + diminish)
+var diligence # Probability of going to work (1-9 ... translates to probs 0.1-0.45 ... + diminish)
+
+# Other parameters
+var Building = preload('Building.gd')
+var NavigationMap
+onready var death = preload('res://people/death.tscn')
+onready var animation = get_node("AnimationPlayer")
+var Population
 var death_sounds
+
+# Constants
+const ACCELERATION_FACTOR = 6
+
+# Locals
+var goal = Building.Goal.TAKE
+var dead = false
+var path = []
 
 var houseBuilding
 var occupationBuilding
@@ -40,28 +62,105 @@ var warehouseBuilding
 var foodBuilding
 var resourceProduced
 
-var _hungryRatio = randf() * (MAX_HUNGRY_RATIO - MIN_HUNGRY_RATIO) + MIN_HUNGRY_RATIO
 var _currentTargetBuilding
 var _prevDirection
 
-func initialize(houseBuilding, occupationBuilding, warehouseBuilding, foodBuilding):
-	self.born_speed = SPEED + randf()*SPEED - SPEED/2.0
+var delay = 0.5
+
+var speed = 0
+var lives = 0
+var max_lives = 0
+
+var hun = 0 # hungryness as prb
+var dil = 0 # diligence as prb
+
+func initialize(occupation, hungryness, diligence, movement, productivity, houseBuilding, occupationBuilding, warehouseBuilding, foodBuilding):
+	var delta = 0
+	
+	if randf() < MUTATION_PROBABILITY:
+		occupation = int(rand_range(MIN_OCCUPATION, MAX_OCCUPATION+1))
+	self.occupation = occupation
+	
+	if randf() < MUTATION_PROBABILITY:
+		delta = sign(randf()-0.2) * HUNGRYNESS_DELTA # with probability of 4/5 the delta will be bad
+	self.hungryness = min(MAX_HUNGRYNESS, max(MIN_HUNGRYNESS, hungryness + delta))
+	
+	delta = 0
+	if randf() < MUTATION_PROBABILITY:
+		delta = sign(randf()-0.8) * DILIGENCE_DELTA # with probability of 4/5 the delta will be bad
+	self.diligence = min(MAX_DILIGENCE, max(MIN_DILIGENCE, diligence + delta))
+	
+	delta = 0
+	if randf() < MUTATION_PROBABILITY:
+		delta = sign(randf()-0.8) * MOVEMENT_DELTA # with probability of 4/5 the delta will be bad
+	self.base_movement_speed = min(MAX_BASE_MOVEMENT, max(MIN_BASE_MOVEMENT, movement + delta))
+	
+	delta = 0
+	if randf() < MUTATION_PROBABILITY:
+		delta = sign(randf()-0.8) * PRODUCTIVITY_DELTA # with probability of 4/5 the delta will be bad
+	self.productivity = min(MAX_PRODUCTIVITY, max(MIN_PRODUCTIVITY, productivity + delta))
+	
 	self.houseBuilding = houseBuilding
 	self.occupationBuilding = occupationBuilding
 	self.warehouseBuilding = warehouseBuilding
 	self.foodBuilding = foodBuilding
 	self._currentTargetBuilding = houseBuilding
+	
 	self.position = houseBuilding.position + houseBuilding.get_node('Target').position
+	self.max_lives = int(self.hungryness/2)
+	self.lives = self.max_lives
+	
+	self.hun = 0.1 * pow(2, (0.241103 * self.hungryness))
+	self.dil = 0.1 * pow(2, (0.241103 * self.diligence))
+	
 	emit_signal('spawned')
 	Population.add_to_population(self)
 
+func cross_occupation(a, b):
+	if a == b:
+		return a if randf() < 0.9 else max(int(3*randf()), 2)
+	
+	var v = randf()
+	return a if v < 0.4 else b if v < 0.8 else max(int(3*randf()), 2)
+
+func linear_cross(a, b):
+	var v = randf()
+	# No check for min/max since it is a linear combination
+	return int(v*a + (1-v)*b)
+
+func cross(a, b):
+	var occupation = self.cross_occupation(a.occupation, b.occupation)
+	var movement = self.linear_cross(a.base_movement_speed, b.base_movement_speed)
+	var hungryness = self.linear_cross(a.hungryness, b.hungryness)
+	var diligence = self.linear_cross(a.diligence, b.diligence)
+	var productivity = self.linear_cross(a.productivity, b.productivity)
+
+	Population.spawn_citizen(occupation, movement, hungryness, diligence, productivity)
+
+func mate():
+	if randf() > self.MATING_PROBABILITY or len(Population.population) <= 1:
+		return
+	
+	var friend = null
+	while friend == null:
+		var idx = int(rand_range(0, len(Population.population)))
+		friend = Population.population[idx]
+		if friend == self:
+			friend = null
+		
+	var individual = self.cross(self, friend)
+	
 func _ready():
-	self.dead = false
 	NavigationMap = get_parent().get_parent().get_node('NavigationMap')
 	Population = get_node('/root/Root/Population')
-	
+
 func _process(delta):
-	_moveAccordingToDirection(delta)
+	if delay > 0:
+		delay -= delta
+		if delay <= 0:
+			self.speed = 24
+	else:
+		_moveAccordingToDirection(delta)
 
 func _choose_building(options, probabilities):
 	var val = randf()
@@ -79,7 +178,6 @@ func _choose_building(options, probabilities):
 
 func _onBuildingReached():
 	self._currentTargetBuilding.interactWith(self, self.goal)
-	self.current_speed = min(born_speed, SPEED)
 	
 	var rnd = randf()
 	var res = Stats.resources[resourceProduced]
@@ -92,16 +190,18 @@ func _onBuildingReached():
 			if res.expectedAmount >= res.capacity:
 				self._currentTargetBuilding = houseBuilding
 			else:
-				self._choose_building([occupationBuilding, houseBuilding], [0.5, 0.5])
+				var S = 1 - self.hun
+				self._choose_building([occupationBuilding, houseBuilding], [self.dil/S, (1-self.dil-self.hun)/S])
 			self.goal = Building.Goal.TAKE
 		houseBuilding:
 			if res.expectedAmount >= res.capacity:
 				self._currentTargetBuilding = foodBuilding
 			else:
-				self._choose_building([foodBuilding, occupationBuilding], [self._hungryRatio, 1 - self._hungryRatio])
+				var S = 1 - self.dil
+				self._choose_building([foodBuilding, occupationBuilding], [self.hun/S, (1-self.dil-self.hun)/S])
 			self.goal = Building.Goal.TAKE
 		warehouseBuilding:
-			var probs = [self._hungryRatio, ((1.0 - self._hungryRatio)*(1.0 - self._hungryRatio)) / 2 + self._hungryRatio, 1-((1.0 - self._hungryRatio)*(1.0 - self._hungryRatio)) / 2 + self._hungryRatio]
+			var probs = [self.hun, 1-self.hun-self.dil, self.dil]
 			var S = 0
 			
 			if res.expectedAmount >= res.capacity:
@@ -115,12 +215,15 @@ func _onBuildingReached():
 			self.goal = Building.Goal.TAKE
 	
 func _moveAccordingToDirection(delta):
+	if self.speed < self.base_movement_speed:
+		self.speed += ACCELERATION_FACTOR * delta
+	
 	if self.path and len(self.path) > 0:
 		var target = path[0]
 		var direction = (target-position).normalized()
 		self._updateAnimation(direction)
 		self._prevDirection = direction
-		position += direction * self.current_speed * delta
+		position += direction * self.speed * delta
 		
 		if position.distance_to(target) < 3.0:
 			path.remove(0)
