@@ -107,7 +107,7 @@ func initialize(occupation, hungryness, diligence, movement, productivity, house
 	self._currentTargetBuilding = houseBuilding
 	
 	self.position = houseBuilding.position + houseBuilding.get_node('Target').position
-	self.max_lives = int(self.hungryness/2)
+	self.max_lives = max(int(self.hungryness/2), 1)
 	self.lives = self.max_lives
 	
 	self.hun = 0.1 * pow(2, (0.241103 * self.hungryness))
