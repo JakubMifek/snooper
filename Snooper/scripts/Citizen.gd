@@ -7,7 +7,13 @@ onready var animation = get_node("AnimationPlayer")
 const MAX_HUNGRY_RATIO = 0.50
 const MIN_HUNGRY_RATIO = 0.25
 const SPEED = 2.0
+const ACCELERATION = 0.1
+
 var current_speed = SPEED
+var born_speed = SPEED
+
+var hungry = 0 # 0-10
+var fatness = 5 # 0-10
 
 var goal = Building.Goal.GIVE
 
@@ -24,6 +30,7 @@ var _currentTargetBuilding
 var _previousTargetLocation
 
 func initialize(houseBuilding, occupationBuilding, warehouseBuilding, foodBuilding):
+	self.born_speed = SPEED + randf()*2.5 - 1
 	self.houseBuilding = houseBuilding
 	self.occupationBuilding = occupationBuilding
 	self.warehouseBuilding = warehouseBuilding
@@ -36,25 +43,31 @@ func _process(delta):
 
 func _onBuildingReached():
 	self._currentTargetBuilding.interactWith(self, self.goal)
-	current_speed = SPEED + randf()*2 - 1
+	self.current_speed = min(born_speed, SPEED)
 	
 	var rnd = randf()
-	if self._currentTargetBuilding == occupationBuilding:
-		self._currentTargetBuilding = warehouseBuilding
-		self.goal = Building.Goal.GIVE
-	elif self._currentTargetBuilding == foodBuilding:
-		self._currentTargetBuilding = occupationBuilding if rnd < 0.5 else houseBuilding
-	elif self._currentTargetBuilding == houseBuilding:
-		self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else occupationBuilding
-		if self._currentTargetBuilding == foodBuilding:
-			self.goal = Building.Goal.TAKE
-	elif self._currentTargetBuilding == warehouseBuilding:
-		self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else houseBuilding if rnd < (1.0 - self._hungryRatio) / 2 + self._hungryRatio else occupationBuilding
-		if self._currentTargetBuilding == foodBuilding:
-			self.goal = Building.Goal.TAKE
+	match self._currentTargetBuilding: 
+		occupationBuilding:
+			self._currentTargetBuilding = warehouseBuilding
+			self.goal = Building.Goal.GIVE
+		foodBuilding:
+			self._currentTargetBuilding = occupationBuilding if rnd < 0.5 else houseBuilding
+		houseBuilding:
+			self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else occupationBuilding
+			if self._currentTargetBuilding == foodBuilding:
+				self.goal = Building.Goal.TAKE
+		warehouseBuilding:
+			self._currentTargetBuilding = foodBuilding if rnd < self._hungryRatio else houseBuilding if rnd < (1.0 - self._hungryRatio) / 2 + self._hungryRatio else occupationBuilding
+			if self._currentTargetBuilding == foodBuilding:
+				self.goal = Building.Goal.TAKE
 	
 func _moveAccordingToDirection(delta):
 	var goingToLocation = self._currentTargetBuilding.position + self._currentTargetBuilding.get_node('Target').position
+	
+	if self.current_speed < self.born_speed:
+		self.current_speed += ACCELERATION * delta * born_speed
+	else:
+		self.current_speed = born_speed
 	
 	var updateAnimation = self._previousTargetLocation != goingToLocation
 	self._previousTargetLocation = goingToLocation
@@ -67,7 +80,7 @@ func _moveAccordingToDirection(delta):
 	
 func _moveToDirection(direction, delta, updateAnimation):
 	var normalizedDirection = direction.normalized()
-	var moveVector = normalizedDirection * current_speed
+	var moveVector = normalizedDirection * self.current_speed
 	if updateAnimation:
 		self._updateAnimation(normalizedDirection)
 	self.position += moveVector
