@@ -1,0 +1,88 @@
+- sniper shooting sound
+	https://opengameart.org/content/q009s-weapon-sounds
+	Q009
+
+- sniper reload sound
+	https://opengameart.org/content/shotgun-shoot-reload
+	Mike Koenig (Soundbible)
+
+- sniper shot with no ammo
+	https://opengameart.org/content/q009s-weapon-sounds
+	Q009
+
+- villager death sounds
+	MALE
+		https://opengameart.org/content/11-male-human-paindeath-sounds
+		Michel Baradari
+	FEMALE
+		https://opengameart.org/content/dying-voices-female-rpg
+		Galacti-Chron
+
+- main menu button hover sound
+	https://opengameart.org/content/click-ui-menu-sfx-yesnoselect
+	qubodup
+
+- main menu button click sound
+	https://opengameart.org/content/chaingun-pistol-rifle-shotgun-shots
+	Michel Baradari
+
+- main menu music
+	https://opengameart.org/content/epic-main-menu-theme-loop
+	CleytonKauffman
+	
+- resource picked up
+	https://opengameart.org/content/3-item-sounds
+	Michel Baradari
+
+- resource dropped
+	https://opengameart.org/content/3-item-sounds
+	Michel Baradari
+
+- villager eats from granary
+	https://opengameart.org/content/miscmenu-sci-fi-sounds
+	Brandon Morris
+
+- footsteps of villagers
+	https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud
+	TinyWorlds
+
+- dialog menu opened & next page & closed
+	https://opengameart.org/content/book-flip-sounds
+	Voltiment555
+
+- village ambience sounds
+
+- gameplay music tracks (5+ for random options)
+
+- font
+	http://www.zone38.net/
+	codeman38 | cody@zone38.net
+OPTIONAL:
+
+- Ambient Sounds
+	Crow Caw
+		https://opengameart.org/content/crow-caw
+		zeroisnotnull
+
+- Quarry monster
+	https://opengameart.org/content/horror-scream1
+	Vinrax
+
+- Stabbed by murderer scream
+	https://opengameart.org/content/aargh-male-screams
+	congusbongus
+
+- Sniper got cold (worse aim)
+	https://opengameart.org/content/genuine-sneeze-sound
+	qubodup
+
+- Forest dogs attack village
+	https://opengameart.org/content/attack-of-the-angry-dogs-screams-rips
+	Nicholas Judy
+
+- Crows attack farm crops
+	https://opengameart.org/content/crows-singing
+	IgnasD
+
+
+- villager scream sounds (when they see someone getting shot)
