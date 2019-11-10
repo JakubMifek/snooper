@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://images/ui/tutorial.png" type="Texture" id=1]
+[ext_resource path="res://fonts/PixelFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/menu/BackToMenuButton.gd" type="Script" id=3]
 
 [node name="Control2" type="Control"]
 margin_right = 1919.0
@@ -10,3 +12,13 @@ margin_bottom = 1082.0
 position = Vector2( 961.259, 540.901 )
 scale = Vector2( 1.53991, 1.53639 )
 texture = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 745.363
+margin_top = 611.727
+margin_right = 1201.36
+margin_bottom = 712.727
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+script = ExtResource( 3 )
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
