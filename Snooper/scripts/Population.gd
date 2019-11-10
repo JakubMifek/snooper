@@ -2,7 +2,6 @@ extends Node2D
 
 export var spawnLocation = Vector2()
 
-var currentPopulation = 0
 var population = []
 onready var label = get_node("Canvas/PopulationCounter")
 onready var village = get_node('../Village')
@@ -64,6 +63,7 @@ func _killCitizens(position):
 		d.play()
 		return
 	
+	Stats.add_resource(Stats.RESOURCES.population, peopleToKill)
 	while len(peopleToKill):
 		var idx = peopleToKill.pop_back()
 		var personToKill = population[idx]
@@ -77,7 +77,7 @@ func add_to_population(citizen):
 	self.speed = ((self.speed * N) + citizen.base_movement_speed)/max(1, N+1)
 	self.lives = ((self.lives * N) + citizen.lives)/max(1, N+1)
 	
-	currentPopulation += 1
+	Stats.add_resource(Stats.RESOURCES.population, 1)
 	citizen.connect('death', self, '_on_citizen_death')
 	population.append(citizen)
 	_setText()
@@ -89,6 +89,7 @@ func _spawnCitizen(occupation=null):
 	var citizen = village.spawnCitizen(occupation)
 
 func _setText():
+	var currentPopulation = Stats.get_resource(Stats.RESOURCES.population)
 	label.text = ""
 	label.push_color(Color(1.0, 0.0, 0.0, 1.0))
 	label.add_text("Population: " + str(currentPopulation))
