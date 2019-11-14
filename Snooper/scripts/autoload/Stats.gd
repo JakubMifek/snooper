@@ -37,7 +37,7 @@ func _init():
 	
 func add_resource(resourceType, value):
 	var resource = self.resources[resourceType]
-	resource.amount += value
+	resource.set_amount(resource.amount + value)
 	if resource.amount >= resource.capacity:
 		resource.set_amount(resource.capacity)
 		var popup = get_node('/root/Root/UI/CanvasLayer2/PopupDialog/PopupDialog')
