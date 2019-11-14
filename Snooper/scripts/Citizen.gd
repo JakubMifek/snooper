@@ -11,8 +11,9 @@ signal death
 signal spawned
 
 # Hyperparameters
-const MUTATION_PROBABILITY = 0.2
-const MATING_PROBABILITY = 0.2
+const MUTATION_PROBABILITY = 2.0/5.0
+const MATING_PROBABILITY = 1.0/3.0
+const GOOD_MUTATION_CHANCE = 0.55
 
 const MIN_OCCUPATION = 0
 const MAX_OCCUPATION = 2
@@ -70,34 +71,32 @@ var delay = 0.5
 var speed = 0
 var lives = 0
 var max_lives = 0
+var just_spawned = true
 
 var hun = 0 # hungryness as prb
 var dil = 0 # diligence as prb
 
 func initialize(occupation, hungryness, diligence, movement, productivity, houseBuilding, occupationBuilding, warehouseBuilding, foodBuilding):
-	var delta = 0
-	
-	if randf() < MUTATION_PROBABILITY:
-		occupation = int(rand_range(MIN_OCCUPATION, MAX_OCCUPATION+1))
 	self.occupation = occupation
 	
+	var delta = 0
 	if randf() < MUTATION_PROBABILITY:
-		delta = sign(randf()-0.2) * HUNGRYNESS_DELTA # with probability of 4/5 the delta will be bad
+		delta = sign(randf()-GOOD_MUTATION_CHANCE) * HUNGRYNESS_DELTA # with probability of 4/5 the delta will be bad
 	self.hungryness = min(MAX_HUNGRYNESS, max(MIN_HUNGRYNESS, hungryness + delta))
 	
 	delta = 0
 	if randf() < MUTATION_PROBABILITY:
-		delta = sign(randf()-0.8) * DILIGENCE_DELTA # with probability of 4/5 the delta will be bad
+		delta = sign(randf()-(1-GOOD_MUTATION_CHANCE)) * DILIGENCE_DELTA # with probability of 4/5 the delta will be bad
 	self.diligence = min(MAX_DILIGENCE, max(MIN_DILIGENCE, diligence + delta))
 	
 	delta = 0
 	if randf() < MUTATION_PROBABILITY:
-		delta = sign(randf()-0.8) * MOVEMENT_DELTA # with probability of 4/5 the delta will be bad
+		delta = sign(randf()-(1-GOOD_MUTATION_CHANCE)) * MOVEMENT_DELTA # with probability of 4/5 the delta will be bad
 	self.base_movement_speed = min(MAX_BASE_MOVEMENT, max(MIN_BASE_MOVEMENT, movement + delta))
 	
 	delta = 0
 	if randf() < MUTATION_PROBABILITY:
-		delta = sign(randf()-0.8) * PRODUCTIVITY_DELTA # with probability of 4/5 the delta will be bad
+		delta = sign(randf()-(1-GOOD_MUTATION_CHANCE)) * PRODUCTIVITY_DELTA # with probability of 4/5 the delta will be bad
 	self.productivity = min(MAX_PRODUCTIVITY, max(MIN_PRODUCTIVITY, productivity + delta))
 	
 	self.houseBuilding = houseBuilding
@@ -118,15 +117,15 @@ func initialize(occupation, hungryness, diligence, movement, productivity, house
 
 func cross_occupation(a, b):
 	if a == b:
-		return a if randf() < 0.9 else max(int(3*randf()), 2)
+		return a if randf() < 0.9 else (int(round(29*randf())) % 3)
 	
 	var v = randf()
-	return a if v < 0.4 else b if v < 0.8 else max(int(3*randf()), 2)
+	return a if v < 0.4 else b if v < 0.8 else (int(round(29*randf())) % 3)
 
 func linear_cross(a, b):
 	var v = randf()
 	# No check for min/max since it is a linear combination
-	return int(v*a + (1-v)*b)
+	return round(v*a + (1-v)*b)
 
 func cross(a, b):
 	var occupation = self.cross_occupation(a.occupation, b.occupation)
@@ -135,6 +134,10 @@ func cross(a, b):
 	var diligence = self.linear_cross(a.diligence, b.diligence)
 	var productivity = self.linear_cross(a.productivity, b.productivity)
 
+	if randf() < MUTATION_PROBABILITY:
+		occupation = round(rand_range(MIN_OCCUPATION, MAX_OCCUPATION))
+	self.occupation = occupation
+	
 	Population.spawn_citizen(occupation, movement, hungryness, diligence, productivity)
 
 func mate():
@@ -160,7 +163,7 @@ func _process(delta):
 		if delay <= 0:
 			self.speed = 24
 	else:
-		_moveAccordingToDirection(delta)
+		_moveAccordingToDirection(delta * Stats.resources[Stats.RESOURCES.speed].amount)
 
 func _choose_building(options, probabilities):
 	var val = randf()
@@ -187,18 +190,18 @@ func _onBuildingReached():
 			self._currentTargetBuilding = warehouseBuilding
 			self.goal = Building.Goal.GIVE
 		foodBuilding:
-			if res.expectedAmount >= res.capacity:
+			if res.amount >= res.capacity:
 				self._currentTargetBuilding = houseBuilding
 			else:
 				var S = 1 - self.hun
 				self._choose_building([occupationBuilding, houseBuilding], [self.dil/S, (1-self.dil-self.hun)/S])
 			self.goal = Building.Goal.TAKE
 		houseBuilding:
-			if res.expectedAmount >= res.capacity:
+			if res.amount >= res.capacity:
 				self._currentTargetBuilding = foodBuilding
 			else:
-				var S = 1 - self.dil
-				self._choose_building([foodBuilding, occupationBuilding], [self.hun/S, (1-self.dil-self.hun)/S])
+				var S = self.dil + self.hun
+				self._choose_building([foodBuilding, occupationBuilding], [self.hun/S, self.dil/S])
 			self.goal = Building.Goal.TAKE
 		warehouseBuilding:
 			var probs = [self.hun, 1-self.hun-self.dil, self.dil]
@@ -225,7 +228,7 @@ func _moveAccordingToDirection(delta):
 		self._prevDirection = direction
 		position += direction * self.speed * delta
 		
-		if position.distance_to(target) < 3.0:
+		if position.distance_to(target) < 1.0:
 			path.remove(0)
 			if len(path) == 0:
 				path = null

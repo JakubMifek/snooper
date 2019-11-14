@@ -11,8 +11,8 @@ func _ready():
 	houses = get_tree().get_nodes_in_group("houses")
 
 func spawnCitizen(occupation=null, hungryness = 3, diligence = 2, movement = int(rand_range(52, 77)), productivity = 1):
-	var occ = occupation if occupation != null else int(3*randf())
-	
+	var occ = int(occupation) if occupation != null else int(3*randf())
+
 	if occ == Citizen.Occupation.FARMER:
 		return self._spawnFarmer(hungryness, diligence, movement, productivity)
 	elif occ == Citizen.Occupation.LUMBERJACK:

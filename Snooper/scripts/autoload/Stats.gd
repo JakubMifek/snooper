@@ -9,7 +9,8 @@ enum RESOURCES {
 	wood = 3,
 	farmers = 4,
 	stone_miners = 5,
-	lumberjacks = 6
+	lumberjacks = 6,
+	speed = 7
 }
 
 var _resources = {
@@ -19,7 +20,8 @@ var _resources = {
 	RESOURCES.wood: resource.new("wood", 0, INF, INF),
 	RESOURCES.farmers: resource.new("farmers", 0, INF, INF),
 	RESOURCES.stone_miners: resource.new("stone_miners", 0, INF, INF),
-	RESOURCES.lumberjacks: resource.new("lumberjacks", 0, INF, INF)
+	RESOURCES.lumberjacks: resource.new("lumberjacks", 0, INF, INF),
+	RESOURCES.speed: resource.new('speed', 1, INF, INF)
 }
 
 var resources = []
@@ -32,7 +34,8 @@ func _init():
 		 _resources[RESOURCES.wood],
 		 _resources[RESOURCES.farmers],
 		 _resources[RESOURCES.stone_miners],
-		 _resources[RESOURCES.lumberjacks]
+		 _resources[RESOURCES.lumberjacks],
+		 _resources[RESOURCES.speed]
 	]
 	
 func add_resource(resourceType, value):

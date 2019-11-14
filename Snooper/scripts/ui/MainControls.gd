@@ -45,12 +45,16 @@ func _input(event):
 		T.one_shot = true
 		T.connect("timeout", self, "_on_timeout")
 	
-	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_ESCAPE:
+	if event is InputEventKey and event.pressed:
+		if event.scancode == KEY_ESCAPE:
 			get_tree().change_scene("res://scenes/menu/Menu.tscn")
-		if event.pressed and event.scancode == KEY_F1 and Stats.can_upgrade():
+		if event.scancode == KEY_F1 and Stats.can_upgrade():
 			Stats.upgrade()
 			UpgradeButton.visible = false
+		if event.scancode == KEY_EQUAL and Stats.resources[Stats.RESOURCES.speed].amount < 3:
+			Stats.resources[Stats.RESOURCES.speed].amount += 1
+		if event.scancode == KEY_MINUS and Stats.resources[Stats.RESOURCES.speed].amount > 1:
+			Stats.resources[Stats.RESOURCES.speed].amount -= 1
 	if event is InputEventMouseButton and event.pressed:
 		match (event.button_index):
 			BUTTON_LEFT:
@@ -69,10 +73,9 @@ func _input(event):
 					EmptyClip.play()
 				
 			BUTTON_RIGHT:
-				if can_shoot:
-					print_debug("BUTTON_RIGHT")
+				pass
 			_:
-				print_debug("No")
+				pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

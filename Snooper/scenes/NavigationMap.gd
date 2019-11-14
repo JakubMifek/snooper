@@ -112,5 +112,6 @@ func get_path(start=null, end=null):
 	var path_world = []
 	for point in path_map:
 		var point_world = map_to_world(Vector2(point.x, point.y)) + half_cell_size
+		point_world[1] += half_cell_size[1] * 0.333
 		path_world.append(point_world)
 	return path_world

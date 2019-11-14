@@ -14,5 +14,9 @@ func interactWith(citizen, goal):
 	.interactWith(citizen, goal)
 	if not self.name.begins_with('House'):
 		return
-		
+	
+	if citizen.just_spawned:
+		citizen.just_spawned = false
+		return
+	
 	citizen.mate()
