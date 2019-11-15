@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu/MenuCenterControl.gd" type="Script" id=2]
@@ -33,8 +33,9 @@
 [ext_resource path="res://images/menu/sniper/0001.png" type="Texture" id=31]
 [ext_resource path="res://images/menu/0001.png" type="Texture" id=32]
 [ext_resource path="res://scenes/menu/AnimatedSniperRifle.gd" type="Script" id=33]
-[ext_resource path="res://scenes/Village.tscn" type="PackedScene" id=34]
-[ext_resource path="res://images/backgrounds/shade.png" type="Texture" id=35]
+[ext_resource path="res://fonts/PixelFontBig.tres" type="DynamicFont" id=34]
+[ext_resource path="res://scenes/Village.tscn" type="PackedScene" id=35]
+[ext_resource path="res://images/backgrounds/shade.png" type="Texture" id=36]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -84,9 +85,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
+margin_left = -201.0
 margin_top = -30.0
-margin_right = 200.0
+margin_right = 199.0
 margin_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -137,7 +138,16 @@ animation = "idle"
 playing = true
 script = ExtResource( 33 )
 
-[node name="Node2D" parent="." instance=ExtResource( 34 )]
+[node name="Label" type="Label" parent="."]
+margin_left = 760.0
+margin_top = 185.0
+margin_right = 1259.0
+margin_bottom = 361.0
+custom_fonts/font = ExtResource( 34 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Snooper"
+
+[node name="Node2D" parent="." instance=ExtResource( 35 )]
 position = Vector2( 397.609, 265.474 )
 scale = Vector2( 1.2, 1.2 )
 z_index = -2
@@ -146,7 +156,7 @@ z_index = -2
 position = Vector2( 2907.66, 2486.79 )
 scale = Vector2( 5.05584, 4.57405 )
 z_index = -1
-texture = ExtResource( 35 )
+texture = ExtResource( 36 )
 offset = Vector2( -400, -400 )
 [connection signal="button_down" from="Control/StartButton" to="." method="_on_StartButton_button_down"]
 [connection signal="button_down" from="Control/CreaditsButton" to="." method="_on_CreaditsButton_button_down"]
